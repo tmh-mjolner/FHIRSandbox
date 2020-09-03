@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="C:\GIT\FHIRSandbox"/>
+	</list>
+	<list key="installedFeatures">
+		<item value="org.codehaus.groovy.eclipse.feature:3.5.1.v201909291550-e48"/>
+		<item value="org.codehaus.groovy24.feature:3.5.1.v201909291550-e48"/>
+		<item value="org.eclipse.cvs:1.4.404.v20180330-0640"/>
+		<item value="org.eclipse.egit.gitflow.feature:4.9.2.201712150930-r"/>
+		<item value="org.eclipse.egit.mylyn:4.9.2.201712150930-r"/>
+		<item value="org.eclipse.egit:4.9.2.201712150930-r"/>
+		<item value="org.eclipse.emf.common.source:2.13.0.v20170609-0707"/>
+		<item value="org.eclipse.emf.common:2.13.0.v20170609-0707"/>
+		<item value="org.eclipse.emf.ecore.source:2.13.0.v20170609-0707"/>
+		<item value="org.eclipse.emf.ecore:2.13.0.v20170609-0707"/>
+		<item value="org.eclipse.help.source:2.2.104.v20180330-0640"/>
+		<item value="org.eclipse.help:2.2.104.v20180330-0640"/>
+		<item value="org.eclipse.jdt:3.13.4.v20180330-0919"/>
+		<item value="org.eclipse.jgit:4.9.2.201712150930-r"/>
+		<item value="org.eclipse.mylyn.commons.identity:1.15.0.v20170411-1844"/>
+		<item value="org.eclipse.mylyn.commons.notifications:1.15.0.v20170411-1844"/>
+		<item value="org.eclipse.mylyn.commons.repositories:1.15.0.v20170411-1844"/>
+		<item value="org.eclipse.mylyn.commons:3.23.0.v20170503-0014"/>
+		<item value="org.eclipse.mylyn.context_feature:3.23.0.v20170414-0629"/>
+		<item value="org.eclipse.mylyn.discovery:3.23.0.v20170411-1844"/>
+		<item value="org.eclipse.mylyn.github.feature:4.9.0.201710071750-r"/>
+		<item value="org.eclipse.mylyn.monitor:3.23.0.v20170411-1844"/>
+		<item value="org.eclipse.mylyn.team_feature:3.23.0.v20170411-2108"/>
+		<item value="org.eclipse.mylyn_feature:3.23.1.v20170623-0008"/>
+		<item value="org.eclipse.pde:3.13.4.v20180330-0640"/>
+		<item value="org.eclipse.platform.source:4.7.3.v20180330-0640"/>
+		<item value="org.eclipse.platform:4.7.3.v20180330-0640"/>
+		<item value="org.eclipse.rcp:4.7.3.v20180330-0640"/>
+		<item value="org.eclipse.sdk:4.7.3.v20180330-0919"/>
+		<item value="org.eclipse.team.svn:4.0.5.I20170425-1700"/>
+		<item value="org.eclipse.wst.common.fproj:3.7.1.v201707201954"/>
+		<item value="org.eclipse.wst.json_ui.feature:1.1.2.v201711071522"/>
+		<item value="org.eclipse.wst.xml_ui.feature:3.9.2.v201803221834"/>
+		<item value="org.polarion.eclipse.team.svn.connector.svnkit18:6.0.4.I20161211-1700"/>
+		<item value="org.polarion.eclipse.team.svn.connector:6.0.4.I20161211-1700"/>
+	</list>
+	<section name="org.eclipse.ui.internal.ide.dialogs.ProjectContentsLocationArea">
+		<item value="C:\GIT\TouchstoneRuleBasics" key="OUTSIDE_LOCATION"/>
+	</section>
+	<section name="NewWizardAction">
+		<item value="org.eclipse.ui.wizards.new.project" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.ui.Basic"/>
+		</list>
+	</section>
+	<section name="BasicNewProjectResourceWizard">
+	</section>
+</section>
