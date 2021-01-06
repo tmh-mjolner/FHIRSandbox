@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Organization xmlns="http://hl7.org/fhir">
+	<identifier>
+		<use value="official"/>
+		<system value="http://happyvalley.com/organization"/>
+		<value value="${CD12}${D6}${CD5}"/>
+	</identifier>
+	<active value="true"/>
+	<name value="HL7 International ${CD10}"/>
+	<telecom>
+		<system value="phone"/>
+		<value value="(+1) ${D3}-${D3}-${D4}"/>
+	</telecom>
+</Organization>

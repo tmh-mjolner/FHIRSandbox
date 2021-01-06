@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Patient xmlns="http://hl7.org/fhir">
+	<id value="${createResourceId}"/>
+	<meta>
+		<security>
+			<system value="http://terminology.hl7.org/CodeSystem/v3-ActReason"/>
+			<code value="HTEST"/>
+			<display value="test health data"/>
+		</security>
+	</meta>
+	<text>
+		<status value="generated"/>
+		<div xmlns="http://www.w3.org/1999/xhtml"><p>Touchstone Test Data - Patient: Peter James Feelsgood</p></div>
+	</text>
+	<identifier>
+		<use value="usual"/>
+		<type>
+			<coding>
+				<system value="http://terminology.hl7.org/CodeSystem/v2-0203"/>
+				<code value="MR"/>
+			</coding>
+		</type>
+		<system value="urn:oid:1.2.36.146.595.217.0.1"/>
+		<value value="${D10}-${D4}"/>
+		<period>
+			<start value="${CURRENTDATE,y,-10}"/>
+		</period>
+		<assigner>
+			<display value="Acme Healthcare"/>
+		</assigner>
+	</identifier>
+	<active value="true"/>
+	<name>
+		<use value="official"/>
+		<family value="Feelsgood${C6}"/>
+		<given value="Peter${C6}"/>
+		<given value="James"/>
+	</name>
+	<telecom>
+		<system value="phone"/>
+		<value value="(${D3}) ${D3} ${D4}"/>
+		<use value="home"/>
+	</telecom>
+	<gender value="male"/>
+	<birthDate value="${CURRENTDATE,y,-36}"/>
+	<deceasedBoolean value="false"/>
+	<address>
+		<use value="home"/>
+		<line value="${D4} Lake Jackson Dr"/>
+		<city value="Manassas"/>
+		<state value="VA"/>
+		<postalCode value="20112"/>
+	</address>
+	<contact>
+		<relationship>
+			<coding>
+				<system value="http://terminology.hl7.org/CodeSystem/v2-0131"/>
+				<code value="N"/>
+			</coding>
+		</relationship>
+		<name>
+			<family value="Feelsgood${C6}"/>
+			<given value="Bianca"/>
+		</name>
+		<telecom>
+			<system value="phone"/>
+			<value value="(${D3}) ${D3} ${D4}"/>
+			<use value="home"/>
+		</telecom>
+		<address>
+			<use value="home"/>
+			<line value="${D4} Lake Jackson Dr"/>
+			<city value="Manassas"/>
+			<state value="VA"/>
+			<postalCode value="20112"/>
+		</address>
+		<gender value="female"/>
+	</contact>
+	<managingOrganization>
+		<reference value="Organization/${referenceOrganizationResourceId}"/>
+	</managingOrganization>
+</Patient>
