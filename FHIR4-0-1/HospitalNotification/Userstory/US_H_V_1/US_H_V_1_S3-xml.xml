@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestScript xmlns="http://hl7.org/fhir">
-	<id value="hospitalNotification-message-admit-emergency"/>
+	<id value="hospitalNotification-message-discharge-emergency-home"/>
 	<meta>
 		<profile value="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript"/>
 	</meta>
 	<text>
 		<status value="generated"/>
-		<div xmlns="http://www.w3.org/1999/xhtml"><p>medcom-hospitalNotification-message testing of status "admit-emergency"- XML</p></div>
+		<div xmlns="http://www.w3.org/1999/xhtml"><p>medcom-hospitalNotification-message testing of status "discharge-emergency-home"- XML</p></div>
 	</text>
 
 	<url value="http://medcom.dk"/>
-	<name value="hospitalNotification-message-admit-emergency-xml"/>
-	<title value="hospitalNotification-message admit-emergency create XML"/>
+	<name value="hospitalNotification-message-discharge-emergency-home-xml"/>
+	<title value="hospitalNotification-message discharge-emergency-home create XML"/>
 	<status value="active"/>
 	<date value="2021-01-05"/>
 	<publisher value="MedCom"/>
@@ -23,7 +23,7 @@
 			<use value="work"/>
 		</telecom>
 	</contact>
-	<description value="Testing correct use of status admit-emergency"/>
+	<description value="US_H_V_1_S1 Testing correct use of status discharge-emergency-home"/>
 	<copyright value="MedCom 2021"/>
 
 	<origin>
@@ -40,19 +40,19 @@
 			<code value="FHIR-Server"/>
 		</profile>
 	</destination>
-<fixture id="bundle-create"> 
+ <fixture id="bundle-create"> 
         <autocreate value="false"/>  
         <autodelete value="false"/>  
-        <resource> 
-            <reference value="../_reference/resources/HospitalNotificationMessage.xml"/> 
+        <resource>
+          <reference value="../_reference/resources/HospitalNotificationMessage-SLHJ.xml"/> 
         </resource> 
-    </fixture> 
+    </fixture>  
 	<profile id="hospitalnotification-profile">
 		<reference value="http://medcom.dk/fhir/medcom-core/StructureDefinition/medcom-hospitalNotification-message"/>
 	</profile>
 	<test id="01-Provenance-activity-code">
-		<name value="ExplanationOfBenefitRead"/>
-		<description value="Read a known existing ExplanationOfBenefit. The expected response is a 200(OK) with a payload of the ExplanationOfBenefit resource in XML format."/>
+		<name value="HospitalNotification"/>
+		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
   
 		 <action>
 			<operation>
@@ -131,7 +131,7 @@
 				<direction value="request"/>
 				<operator value="equals"/>
 				<path value="Bundle.entry[6].resource.Provenance.activity.coding.code"/>
-				<value value="admit-emergency"/>
+				<value value="discharge-inpatient-home"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -151,7 +151,7 @@
 				<direction value="request"/>
 				<operator value="equals"/>
 				<path value="Bundle.entry[3].resource.Encounter.status"/>
-				<value value="in-progress"/>
+				<value value="finished"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>

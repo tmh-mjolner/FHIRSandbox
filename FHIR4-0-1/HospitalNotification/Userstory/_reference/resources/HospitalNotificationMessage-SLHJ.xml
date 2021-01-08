@@ -120,9 +120,9 @@
         </meta>
         <text>
           <status value="generated"/>
-          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>status</b>: in-progress</p><p><b>class</b>: <span title="{http://terminology.hl7.org/CodeSystem/v3-ActCode IMP}">inpatient encounter</span></p><p><b>subject</b>: <a href="#Patient_EricFlame">See above (Patient/EricFlame)</a></p><p><b>episodeOfCare</b>: <span></span></p><p><b>period</b>: Oct 13, 2020, 12:22:12 PM --&gt; (ongoing)</p><p><b>serviceProvider</b>: <a href="#Organization_BurnCenter">See above (Organization/BurnCenter)</a></p></div>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>status</b>: finished</p><p><b>class</b>: <span title="{http://terminology.hl7.org/CodeSystem/v3-ActCode IMP}">inpatient encounter</span></p><p><b>subject</b>: <a href="#Patient_EricFlame">See above (Patient/EricFlame)</a></p><p><b>episodeOfCare</b>: <span></span></p><p><b>period</b>: Oct 13, 2020, 12:22:12 PM --&gt; (ongoing)</p><p><b>serviceProvider</b>: <a href="#Organization_BurnCenter">See above (Organization/BurnCenter)</a></p></div>
         </text>
-        <status value="in-progress"/>
+        <status value="finished"/>
         <class>
           <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
           <code value="IMP"/>
@@ -207,7 +207,7 @@
         </meta>
         <text>
           <status value="generated"/>
-          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>target</b>: <a href="#MessageHeader_HospitalNotificationMessageHeader">See above (MessageHeader/HospitalNotificationMessageHeader)</a></p><p><b>occurred</b>: Oct 15, 2020, 1:44:14 PM</p><p><b>recorded</b>: Oct 15, 2020, 1:45:15 PM</p><p><b>activity</b>: <span title="Codes: {http://medcom.dk/fhir/medcom-core/CodeSystem/medcom-messaging-activityCodes admit-emergency}">Start hospital stay-acute ambulant</span></p><h3>Agents</h3><table class="grid"><tr><td>-</td><td><b>Who</b></td></tr><tr><td>*</td><td><a href="#Organization_MessageSender">See above (Organization/MessageSender)</a></td></tr></table></div>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>target</b>: <a href="#MessageHeader_HospitalNotificationMessageHeader">See above (MessageHeader/HospitalNotificationMessageHeader)</a></p><p><b>occurred</b>: Oct 15, 2020, 1:44:14 PM</p><p><b>recorded</b>: Oct 15, 2020, 1:45:15 PM</p><p><b>activity</b>: <span title="Codes: {http://medcom.dk/fhir/medcom-core/CodeSystem/medcom-messaging-activityCodes discharge-inpatient-home}">discharge-inpatient-home</span></p><h3>Agents</h3><table class="grid"><tr><td>-</td><td><b>Who</b></td></tr><tr><td>*</td><td><a href="#Organization_MessageSender">See above (Organization/MessageSender)</a></td></tr></table></div>
         </text>
         <target>
           <reference value="MessageHeader/HospitalNotificationMessageHeader"/>
@@ -218,7 +218,7 @@
           <coding>
             <system
                     value="http://medcom.dk/fhir/medcom-core/CodeSystem/medcom-messaging-activityCodes"/>
-            <code value="admit-emergency"/>
+            <code value="discharge-inpatient-home"/>
           </coding>
         </activity>
         <agent>

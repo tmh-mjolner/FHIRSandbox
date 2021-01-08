@@ -6,12 +6,12 @@
 	</meta>
 	<text>
 		<status value="generated"/>
-		<div xmlns="http://www.w3.org/1999/xhtml"><p>medcom-hospitalNotification-message testing of status "admit-emergency"- XML</p></div>
+		<div xmlns="http://www.w3.org/1999/xhtml"><p>medcom-hospitalNotification-message testing of status "admit-inpatient"- XML</p></div>
 	</text>
 
 	<url value="http://medcom.dk"/>
-	<name value="hospitalNotification-message-admit-emergency-xml"/>
-	<title value="hospitalNotification-message admit-emergency create XML"/>
+	<name value="hospitalNotification-message-admit-inpatient-xml"/>
+	<title value="hospitalNotification-message admit-inpatient create XML"/>
 	<status value="active"/>
 	<date value="2021-01-05"/>
 	<publisher value="MedCom"/>
@@ -23,7 +23,7 @@
 			<use value="work"/>
 		</telecom>
 	</contact>
-	<description value="Testing correct use of status admit-emergency"/>
+	<description value="Testing correct use of status admit-inpatient"/>
 	<copyright value="MedCom 2021"/>
 
 	<origin>
@@ -40,18 +40,18 @@
 			<code value="FHIR-Server"/>
 		</profile>
 	</destination>
-<fixture id="bundle-create"> 
+ <fixture id="bundle-create"> 
         <autocreate value="false"/>  
         <autodelete value="false"/>  
         <resource> 
-            <reference value="../_reference/resources/HospitalNotificationMessage.xml"/> 
+           <reference value="../_reference/resources/HospitalNotificationMessage-STIN.xml"/>  
         </resource> 
-    </fixture> 
+    </fixture>  
 	<profile id="hospitalnotification-profile">
 		<reference value="http://medcom.dk/fhir/medcom-core/StructureDefinition/medcom-hospitalNotification-message"/>
 	</profile>
 	<test id="01-Provenance-activity-code">
-		<name value="ExplanationOfBenefitRead"/>
+		<name value="HospitalNotification"/>
 		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
   
 		 <action>
@@ -131,7 +131,7 @@
 				<direction value="request"/>
 				<operator value="equals"/>
 				<path value="Bundle.entry[6].resource.Provenance.activity.coding.code"/>
-				<value value="admit-emergency"/>
+				<value value="admit-inpatient"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
