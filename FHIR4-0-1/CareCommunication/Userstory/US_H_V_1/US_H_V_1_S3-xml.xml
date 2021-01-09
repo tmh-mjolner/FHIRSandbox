@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestScript xmlns="http://hl7.org/fhir">
-	<id value="hospitalNotification-message-admit-emergency"/>
+	<id value="hospitalNotification-message-discharge-emergency-home"/>
 	<meta>
 		<profile value="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript"/>
 	</meta>
 	<text>
 		<status value="generated"/>
-		<div xmlns="http://www.w3.org/1999/xhtml"><p>medcom-hospitalNotification-message testing of status "admit-inpatient"- XML</p></div>
+		<div xmlns="http://www.w3.org/1999/xhtml"><p>medcom-hospitalNotification-message testing of status "discharge-emergency-home"- XML</p></div>
 	</text>
 
 	<url value="http://medcom.dk"/>
-	<name value="hospitalNotification-message-admit-inpatient-xml"/>
-	<title value="hospitalNotification-message admit-inpatient create XML"/>
+	<name value="hospitalNotification-message-discharge-emergency-home-xml"/>
+	<title value="hospitalNotification-message discharge-emergency-home create XML"/>
 	<status value="active"/>
 	<date value="2021-01-05"/>
 	<publisher value="MedCom"/>
@@ -23,7 +23,7 @@
 			<use value="work"/>
 		</telecom>
 	</contact>
-	<description value="Testing correct use of status admit-inpatient"/>
+	<description value="US_H_V_1_S1 Testing correct use of status discharge-emergency-home"/>
 	<copyright value="MedCom 2021"/>
 
 	<origin>
@@ -43,8 +43,8 @@
  <fixture id="bundle-create"> 
         <autocreate value="false"/>  
         <autodelete value="false"/>  
-        <resource> 
-           <reference value="../_reference/resources/HospitalNotificationMessage-STIN.xml"/>  
+        <resource>
+          <reference value="../_reference/resources/HospitalNotificationMessage-SLHJ.xml"/> 
         </resource> 
     </fixture>  
 	<profile id="hospitalnotification-profile">
@@ -120,7 +120,6 @@
 				<description value="Confirm that the request resource contains the expected evetCoding code."/>
 				<direction value="request"/>
 				<operator value="equals"/>
-				<!--Bundle.entry.(where(resource.resourceType= 'MessageHeader')).resource.MessageHeader.eventCoding.code -->
 				<path value="Bundle.entry[0].resource.MessageHeader.eventCoding.code"/>
 				<value value="hospital-notification-message"/>
 				<warningOnly value="false"/>
@@ -132,7 +131,7 @@
 				<direction value="request"/>
 				<operator value="equals"/>
 				<path value="Bundle.entry[6].resource.Provenance.activity.coding.code"/>
-				<value value="admit-inpatient"/>
+				<value value="discharge-inpatient-home"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -152,7 +151,7 @@
 				<direction value="request"/>
 				<operator value="equals"/>
 				<path value="Bundle.entry[3].resource.Encounter.status"/>
-				<value value="in-progress"/>
+				<value value="finished"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>

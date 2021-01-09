@@ -1,0 +1,232 @@
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="MedComHospitalNotificationMessageExample"/>
+  <meta>
+    <profile
+             value="http://medcom.dk/fhir/medcom-core/StructureDefinition/medcom-hospitalNotification-message"/>
+  </meta>
+  <type value="message"/>
+  <timestamp value="2020-09-28T12:34:56Z"/>
+  <entry>
+    <fullUrl value="MessageHeader/HospitalNotificationMessageHeader"/>
+    <resource>
+      <MessageHeader>
+        <id value="HospitalNotificationMessageHeader"/>
+        <meta>
+          <profile
+                   value="http://medcom.dk/fhir/medcom-core/StructureDefinition/medcom-hospitalNotification-messageHeader"/>
+        </meta>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>event</b>: <span title="{http://medcom.dk/fhir/medcom-core/CodeSystem/medcom-messaging-eventCodes hospital-notification-message}">Hospital Notification Message</span></p><h3>Destinations</h3><table class="grid"><tr><td>-</td><td><b>Extension</b></td><td><b>Endpoint</b></td><td><b>Receiver</b></td></tr><tr><td>*</td><td></td><td><a href="http://medcom.dk/unknown">http://medcom.dk/unknown</a></td><td><a href="#Organization_MessageReceiver">See above (Organization/MessageReceiver)</a></td></tr></table><p><b>sender</b>: <a href="#Organization_MessageSender">See above (Organization/MessageSender)</a></p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Endpoint</b></td></tr><tr><td>*</td><td><a href="http://medcom.dk/unknown">http://medcom.dk/unknown</a></td></tr></table><p><b>focus</b>: <a href="#Encounter_HospitalNotificationEncounter">See above (Encounter/HospitalNotificationEncounter)</a></p></div>
+        </text>
+        <eventCoding>
+          <system
+                  value="http://medcom.dk/fhir/medcom-core/CodeSystem/medcom-messaging-eventCodes"/>
+          <code value="hospital-notification-message"/>
+        </eventCoding>
+        <destination>
+          <extension
+                     url="http://medcom.dk/fhir/medcom-core/StructureDefinition/medcom-messaging-destinationUseExtension">
+            <valueCoding>
+              <system
+                      value="http://medcom.dk/fhir/medcom-core/CodeSystem/medcom-messaging-destinationUse"/>
+              <code value="primary"/>
+            </valueCoding>
+          </extension>
+          <endpoint value="http://medcom.dk/unknown"/>
+          <receiver>
+            <reference value="Organization/MessageReceiver"/>
+          </receiver>
+        </destination>
+        <sender>
+          <reference value="Organization/MessageSender"/>
+        </sender>
+        <source>
+          <endpoint value="http://medcom.dk/unknown"/>
+        </source>
+        <focus>
+          <reference value="Encounter/HospitalNotificationEncounter"/>
+        </focus>
+      </MessageHeader>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="Patient/EricFlame"/>
+    <resource>
+      <Patient>
+        <id value="EricFlame"/>
+        <meta>
+          <profile
+                   value="http://medcom.dk/fhir/medcom-core/StructureDefinition/medcom-core-patient"/>
+        </meta>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 0102030405</p><p><b>name</b>: Eric Flame (OFFICIAL)</p><p><b>telecom</b>: ph: 12345678</p><p><b>address</b>: Flammesvinget 1 Aarhus 8000 C </p><p><b>managingOrganization</b>: <a href="#Organization_BurnCenter">See above (Organization/BurnCenter)</a></p></div>
+        </text>
+        <identifier>
+          <system value="urn:oid:1.2.208.176.1.2"/>
+          <value value="0102030405"/>
+        </identifier>
+        <name>
+          <use value="official"/>
+          <family value="Flame"/>
+          <given value="Eric"/>
+        </name>
+        <telecom>
+          <system value="phone"/>
+          <value value="12345678"/>
+        </telecom>
+        <address>
+          <line value="Flammesvinget 1"/>
+          <city value="Aarhus"/>
+          <postalCode value="8000 C"/>
+        </address>
+        <managingOrganization>
+          <reference value="Organization/BurnCenter"/>
+        </managingOrganization>
+      </Patient>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="Organization/BurnCenter"/>
+    <resource>
+      <Organization>
+        <id value="BurnCenter"/>
+        <meta>
+          <profile
+                   value="http://medcom.dk/fhir/medcom-core/StructureDefinition/medcom-core-organization"/>
+        </meta>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 123456789012345 (OFFICIAL)</p><p><b>name</b>: Aros Burn Center</p></div>
+        </text>
+        <identifier>
+          <use value="official"/>
+          <system value="urn:oid:1.2.208.176.1.1"/>
+          <value value="123456789012345"/>
+        </identifier>
+        <name value="Aros Burn Center"/>
+      </Organization>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="Encounter/HospitalNotificationEncounter"/>
+    <resource>
+      <Encounter>
+        <id value="HospitalNotificationEncounter"/>
+        <meta>
+          <profile
+                   value="http://medcom.dk/fhir/medcom-core/StructureDefinition/medcom-hospitalNotification-encounter"/>
+        </meta>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>status</b>: in-progress</p><p><b>class</b>: <span title="{http://terminology.hl7.org/CodeSystem/v3-ActCode IMP}">inpatient encounter</span></p><p><b>subject</b>: <a href="#Patient_EricFlame">See above (Patient/EricFlame)</a></p><p><b>episodeOfCare</b>: <span></span></p><p><b>period</b>: Oct 13, 2020, 12:22:12 PM --&gt; (ongoing)</p><p><b>serviceProvider</b>: <a href="#Organization_BurnCenter">See above (Organization/BurnCenter)</a></p></div>
+        </text>
+        <status value="in-progress"/>
+        <class>
+          <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
+          <code value="IMP"/>
+        </class>
+        <subject>
+          <reference value="Patient/EricFlame"/>
+        </subject>
+        <episodeOfCare>
+          <identifier>
+            <system
+                    value="https://www.esundhed.dk/Registre/Landspatientsregisteret"/>
+            <value value="87654321-1234-1234-1234-123456789012"/>
+          </identifier>
+        </episodeOfCare>
+        <period>
+          <start value="2020-10-13T12:22:12Z"/>
+        </period>
+        <serviceProvider>
+          <reference value="Organization/BurnCenter"/>
+        </serviceProvider>
+      </Encounter>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="Organization/MessageReceiver"/>
+    <resource>
+      <Organization>
+        <id value="MessageReceiver"/>
+        <meta>
+          <profile
+                   value="http://medcom.dk/fhir/medcom-core/StructureDefinition/medcom-messaging-organization"/>
+        </meta>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 543210987654321, id: 3210987654321</p><p><b>name</b>: Receiver Organization</p></div>
+        </text>
+        <identifier>
+          <system value="urn:oid:1.2.208.176.1.1"/>
+          <value value="543210987654321"/>
+        </identifier>
+        <identifier>
+          <system value="urn:oid:1.3.88"/>
+          <value value="3210987654321"/>
+        </identifier>
+        <name value="Receiver Organization"/>
+      </Organization>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="Organization/MessageSender"/>
+    <resource>
+      <Organization>
+        <id value="MessageSender"/>
+        <meta>
+          <profile
+                   value="http://medcom.dk/fhir/medcom-core/StructureDefinition/medcom-messaging-organization"/>
+        </meta>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 123456789012345, id: 1234567890123</p><p><b>name</b>: Sender Organization</p></div>
+        </text>
+        <identifier>
+          <system value="urn:oid:1.2.208.176.1.1"/>
+          <value value="123456789012345"/>
+        </identifier>
+        <identifier>
+          <system value="urn:oid:1.3.88"/>
+          <value value="1234567890123"/>
+        </identifier>
+        <name value="Sender Organization"/>
+      </Organization>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="Provenance/HospitalNotificationCommunicationProvenance"/>
+    <resource>
+      <Provenance>
+        <id value="HospitalNotificationCommunicationProvenance"/>
+        <meta>
+          <profile
+                   value="http://medcom.dk/fhir/medcom-core/StructureDefinition/medcom-messaging-provenance"/>
+        </meta>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>target</b>: <a href="#MessageHeader_HospitalNotificationMessageHeader">See above (MessageHeader/HospitalNotificationMessageHeader)</a></p><p><b>occurred</b>: Oct 15, 2020, 1:44:14 PM</p><p><b>recorded</b>: Oct 15, 2020, 1:45:15 PM</p><p><b>activity</b>: <span title="Codes: {http://medcom.dk/fhir/medcom-core/CodeSystem/medcom-messaging-activityCodes admit-emergency}">Start hospital stay-acute ambulant</span></p><h3>Agents</h3><table class="grid"><tr><td>-</td><td><b>Who</b></td></tr><tr><td>*</td><td><a href="#Organization_MessageSender">See above (Organization/MessageSender)</a></td></tr></table></div>
+        </text>
+        <target>
+          <reference value="MessageHeader/HospitalNotificationMessageHeader"/>
+        </target>
+        <occurredDateTime value="2020-10-15T13:44:14Z"/>
+        <recorded value="2020-10-15T13:45:15Z"/>
+        <activity>
+          <coding>
+            <system
+                    value="http://medcom.dk/fhir/medcom-core/CodeSystem/medcom-messaging-activityCodes"/>
+            <code value="admit-inpatient"/>
+          </coding>
+        </activity>
+        <agent>
+          <who>
+            <reference value="Organization/MessageSender"/>
+          </who>
+        </agent>
+      </Provenance>
+    </resource>
+  </entry>
+</Bundle>
