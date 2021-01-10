@@ -10,7 +10,7 @@
 	</text>
 
 	<url value="http://medcom.dk"/>
-	<name value="receive-notification-about-admission""/>
+	<name value="receive-notification-about-admission"/>
 	<title value="hospitalNotification-message admit-inpatient receiving XML"/>
 	<status value="active"/>
 	<date value="2021-01-05"/>
