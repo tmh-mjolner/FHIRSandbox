@@ -120,9 +120,8 @@
 				<description value="Confirm that the request resource contains the expected evetCoding code."/>
 				<direction value="request"/>
 				<operator value="equals"/>
-				<!--Bundle.entry.(where(resource.resourceType= 'MessageHeader')).resource.MessageHeader.eventCoding.code -->
-				<path value="Bundle.entry[0].resource.MessageHeader.eventCoding.code"/>
-				<value value="hospital-notification-message"/>
+				 <!-- <path value="Bundle.entry.(where(resource.resourceType= 'MessageHeader')).resource.MessageHeader.eventCoding.code"/>-->
+				<expression value="Bundle.entry.resource.ofType(MessageHeader).event.as(Coding).select(code = 'hospital-notification-message').allTrue()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
