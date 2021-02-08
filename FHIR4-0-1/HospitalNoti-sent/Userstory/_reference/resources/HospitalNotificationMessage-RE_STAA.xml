@@ -1,5 +1,5 @@
 <Bundle xmlns="http://hl7.org/fhir">
-  <id value="e099bbf3-3fca-4722-a248-bfe1aa956410"/>
+  <id value="354b0493-d6f4-4e0b-9b69-15bb05bbb3c4"/>
   <meta>
     <profile
              value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-message"/>
@@ -122,15 +122,15 @@
         </meta>
         <text>
           <status value="generated"/>
-          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 7b9f8497-3314-4535-8f86-20df7b5f4d55</p><p><b>status</b>: finished</p><p><b>class</b>: <span title="{http://terminology.hl7.org/CodeSystem/v3-ActCode IMP}">inpatient encounter</span></p><p><b>subject</b>: <a href="#Patient_382fb8a3-6725-41e2-a615-2b1cfcfe9931">See above (Patient/382fb8a3-6725-41e2-a615-2b1cfcfe9931)</a></p><p><b>episodeOfCare</b>: <span></span></p><p><b>period</b>: Jan 13, 2021, 1:44:14 PM --&gt; (ongoing)</p><p><b>serviceProvider</b>: <a href="#Organization_bca68510-fe3b-4161-aba0-908a693eb54f">See above (Organization/bca68510-fe3b-4161-aba0-908a693eb54f)</a></p></div>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 7b9f8497-3314-4535-8f86-20df7b5f4d55</p><p><b>status</b>: in-progress</p><p><b>class</b>: <span title="{http://terminology.hl7.org/CodeSystem/v3-ActCode IMP}">inpatient encounter</span></p><p><b>subject</b>: <a href="#Patient_382fb8a3-6725-41e2-a615-2b1cfcfe9931">See above (Patient/382fb8a3-6725-41e2-a615-2b1cfcfe9931)</a></p><p><b>episodeOfCare</b>: <span></span></p><p><b>period</b>: Jan 13, 2021, 1:44:14 PM --&gt; (ongoing)</p><p><b>serviceProvider</b>: <a href="#Organization_bca68510-fe3b-4161-aba0-908a693eb54f">See above (Organization/bca68510-fe3b-4161-aba0-908a693eb54f)</a></p></div>
         </text>
         <identifier>
           <value value="7b9f8497-3314-4535-8f86-20df7b5f4d55"/>
         </identifier>
-        <status value="finished"/>
+        <status value="in-progress"/>
         <class>
           <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
-          <code value="IMP"/>
+          <code value="EMER"/>
         </class>
         <subject>
           <reference value="Patient/382fb8a3-6725-41e2-a615-2b1cfcfe9931"/>
@@ -212,7 +212,7 @@
         </meta>
         <text>
           <status value="generated"/>
-          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>target</b>: <a href="#MessageHeader_8efc6d95-6161-4493-99c9-f359488dedb8">See above (MessageHeader/8efc6d95-6161-4493-99c9-f359488dedb8)</a></p><p><b>occurred</b>: Jan 13, 2021, 1:44:14 PM</p><p><b>recorded</b>: Jan 13, 2021, 1:45:15 PM</p><p><b>activity</b>: <span title="Codes: {http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-activityCodes discharge-inpatient-home}">End hospital Stay - patient discharged to home/primary sector</span></p><h3>Agents</h3><table class="grid"><tr><td>-</td><td><b>Who</b></td></tr><tr><td>*</td><td><a href="#Organization_d7056980-a8b2-42aa-8a0e-c1fc85d1f40d">See above (Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d)</a></td></tr></table></div>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>target</b>: <a href="#MessageHeader_8efc6d95-6161-4493-99c9-f359488dedb8">See above (MessageHeader/8efc6d95-6161-4493-99c9-f359488dedb8)</a></p><p><b>occurred</b>: Jan 13, 2021, 1:44:14 PM</p><p><b>recorded</b>: Jan 13, 2021, 1:45:15 PM</p><p><b>activity</b>: <span title="Codes: {http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-activityCodes revise-admit-emergency}">End hospital Stay - patient discharged to home/primary sector</span></p><h3>Agents</h3><table class="grid"><tr><td>-</td><td><b>Who</b></td></tr><tr><td>*</td><td><a href="#Organization_d7056980-a8b2-42aa-8a0e-c1fc85d1f40d">See above (Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d)</a></td></tr></table></div>
         </text>
         <target>
           <reference value="MessageHeader/8efc6d95-6161-4493-99c9-f359488dedb8"/>
@@ -223,7 +223,7 @@
           <coding>
             <system
                     value="http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-activityCodes"/>
-            <code value="discharge-inpatient-home"/>
+            <code value="revise-admit-emergency"/>
           </coding>
         </activity>
         <agent>
