@@ -48,7 +48,7 @@
         </resource> 
     </fixture>  
 	<profile id="hospitalnotification-profile">
-		<reference value="http://medcom.dk/fhir/medcom-core/StructureDefinition/medcom-hospitalNotification-message"/>
+		<reference value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-message"/>
 	</profile>
 	<test id="01-Provenance-activity-code">
 		<name value="HospitalNotification"/>
@@ -104,17 +104,6 @@
 				<warningOnly value="false"/>
 			</assert>
 		</action>
-		 
-		<action>
-			<assert>
-				<description value="Confirm that the client request payload contains MessageHeader/ "/>
-				<direction value="request"/>
-				<operator value="contains"/>
-				<path value="Bundle.entry[0].fullUrl"/>
-				<value value="MessageHeader/"/>
-				<warningOnly value="false"/>
-			</assert>
-		</action>
 		<action>
 			<assert>
 				<description value="Confirm that the request resource contains the expected evetCoding code."/>
@@ -129,7 +118,7 @@
 				<description value="Confirm that the request resource contains the expected activity code."/>
 				<direction value="request"/>
 				<operator value="equals"/>
-				<path value="Bundle.entry[6].resource.Provenance.activity.coding.code"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.coding.code"/>
 				<value value="admit-inpatient"/>
 				<warningOnly value="false"/>
 			</assert>
@@ -139,7 +128,7 @@
 				<description value="Confirm that the request resource contains the expected Encounter class code."/>
 				<direction value="request"/>
 				<operator value="equals"/>
-				<path value="Bundle.entry[3].resource.Encounter.class.code"/>
+				<expression value="Bundle.entry.resource.ofType(Encounter).class.code"/>
 				<value value="IMP"/>
 				<warningOnly value="false"/>
 			</assert>
@@ -149,7 +138,7 @@
 				<description value="Confirm that the request resource contains the expected status"/>
 				<direction value="request"/>
 				<operator value="equals"/>
-				<path value="Bundle.entry[3].resource.Encounter.status"/>
+				<expression value="Bundle.entry.resource.ofType(Encounter).status"/>
 				<value value="in-progress"/>
 				<warningOnly value="false"/>
 			</assert>
