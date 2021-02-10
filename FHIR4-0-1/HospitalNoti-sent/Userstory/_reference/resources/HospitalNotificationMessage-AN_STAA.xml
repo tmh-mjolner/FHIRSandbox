@@ -1,5 +1,5 @@
 <Bundle xmlns="http://hl7.org/fhir">
-  <id value="354b0493-d6f4-4e0b-9b69-15bb05bbb3c4"/>
+  <id value="cca000c9-4079-4a2e-8be9-38e4d37180fe"/>
   <meta>
     <profile
              value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-message"/>
@@ -7,10 +7,10 @@
   <type value="message"/>
   <timestamp value="2021-01-13T13:44:14Z"/>
   <entry>
-    <fullUrl value="MessageHeader/8efc6d95-6161-4493-99c9-f359488dedb8"/>
+    <fullUrl value="MessageHeader/2b152818-63e8-489a-9743-e5f8ecf3dee5"/>
     <resource>
       <MessageHeader>
-        <id value="8efc6d95-6161-4493-99c9-f359488dedb8"/>
+        <id value="2b152818-63e8-489a-9743-e5f8ecf3dee5"/>
         <meta>
           <profile
                    value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-messageHeader"/>
@@ -212,10 +212,10 @@
         </meta>
         <text>
           <status value="generated"/>
-          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>target</b>: <a href="#MessageHeader_8efc6d95-6161-4493-99c9-f359488dedb8">See above (MessageHeader/8efc6d95-6161-4493-99c9-f359488dedb8)</a></p><p><b>occurred</b>: Jan 13, 2021, 1:44:14 PM</p><p><b>recorded</b>: Jan 13, 2021, 1:45:15 PM</p><p><b>activity</b>: <span title="Codes: {http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-activityCodes revise-admit-emergency}">End hospital Stay - patient discharged to home/primary sector</span></p><h3>Agents</h3><table class="grid"><tr><td>-</td><td><b>Who</b></td></tr><tr><td>*</td><td><a href="#Organization_d7056980-a8b2-42aa-8a0e-c1fc85d1f40d">See above (Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d)</a></td></tr></table></div>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>target</b>: <a href="#MessageHeader_2b152818-63e8-489a-9743-e5f8ecf3dee5">See above (MessageHeader/2b152818-63e8-489a-9743-e5f8ecf3dee5)</a></p><p><b>occurred</b>: Jan 13, 2021, 1:44:14 PM</p><p><b>recorded</b>: Jan 13, 2021, 1:45:15 PM</p><p><b>activity</b>: <span title="Codes: {http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-activityCodes revise-admit-emergency}">End hospital Stay - patient discharged to home/primary sector</span></p><h3>Agents</h3><table class="grid"><tr><td>-</td><td><b>Who</b></td></tr><tr><td>*</td><td><a href="#Organization_d7056980-a8b2-42aa-8a0e-c1fc85d1f40d">See above (Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d)</a></td></tr></table></div>
         </text>
         <target>
-          <reference value="MessageHeader/8efc6d95-6161-4493-99c9-f359488dedb8"/>
+          <reference value="MessageHeader/2b152818-63e8-489a-9743-e5f8ecf3dee5"/>
         </target>
         <occurredDateTime value="2021-01-13T13:44:14Z"/>
         <recorded value="2021-01-13T13:45:15Z"/>

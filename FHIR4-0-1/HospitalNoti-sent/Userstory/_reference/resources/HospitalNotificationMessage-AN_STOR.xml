@@ -1,5 +1,5 @@
 <Bundle xmlns="http://hl7.org/fhir">
-  <id value="0d4d2758-95cd-4147-baf3-fdae0a2016e3"/>
+  <id value="a253958f-1904-49a3-b19e-74ce264aa347"/>
   <meta>
     <profile
              value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-message"/>
@@ -7,10 +7,10 @@
   <type value="message"/>
   <timestamp value="2020-10-15T13:44:14Z"/>
   <entry>
-    <fullUrl value="MessageHeader/51b27813-8aa8-4fa1-846b-aeabf5afb7d4"/>
+    <fullUrl value="MessageHeader/0ca64492-253a-4f51-99ff-bcbfdba5fae2"/>
     <resource>
       <MessageHeader>
-        <id value="51b27813-8aa8-4fa1-846b-aeabf5afb7d4"/>
+        <id value="0ca64492-253a-4f51-99ff-bcbfdba5fae2"/>
         <meta>
           <profile
                    value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-messageHeader"/>
@@ -214,10 +214,10 @@
         </meta>
         <text>
           <status value="generated"/>
-          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>target</b>: <a href="#MessageHeader_51b27813-8aa8-4fa1-846b-aeabf5afb7d4">See above (MessageHeader/51b27813-8aa8-4fa1-846b-aeabf5afb7d4)</a></p><p><b>occurred</b>: Oct 15, 2020, 1:44:14 PM</p><p><b>recorded</b>: Oct 15, 2020, 1:45:15 PM</p><p><b>activity</b>: <span title="Codes: {http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-activityCodes cancel-start-leave-inpatient}">Start hospital stay-admission</span></p><h3>Agents</h3><table class="grid"><tr><td>-</td><td><b>Who</b></td></tr><tr><td>*</td><td><a href="#Organization_d7056980-a8b2-42aa-8a0e-c1fc85d1f40d">See above (Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d)</a></td></tr></table></div>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>target</b>: <a href="#MessageHeader_0ca64492-253a-4f51-99ff-bcbfdba5fae2">See above (MessageHeader/0ca64492-253a-4f51-99ff-bcbfdba5fae2)</a></p><p><b>occurred</b>: Oct 15, 2020, 1:44:14 PM</p><p><b>recorded</b>: Oct 15, 2020, 1:45:15 PM</p><p><b>activity</b>: <span title="Codes: {http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-activityCodes cancel-start-leave-inpatient}">Start hospital stay-admission</span></p><h3>Agents</h3><table class="grid"><tr><td>-</td><td><b>Who</b></td></tr><tr><td>*</td><td><a href="#Organization_d7056980-a8b2-42aa-8a0e-c1fc85d1f40d">See above (Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d)</a></td></tr></table></div>
         </text>
         <target>
-          <reference value="MessageHeader/51b27813-8aa8-4fa1-846b-aeabf5afb7d4"/>
+          <reference value="MessageHeader/0ca64492-253a-4f51-99ff-bcbfdba5fae2"/>
         </target>
         <occurredDateTime value="2020-10-15T13:44:14Z"/>
         <recorded value="2020-10-15T13:45:15Z"/>
