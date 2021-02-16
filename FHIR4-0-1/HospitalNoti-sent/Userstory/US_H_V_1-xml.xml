@@ -44,19 +44,22 @@
         <autocreate value="false"/>  
         <autodelete value="false"/>  
         <resource> 
-           <reference value="../_reference/resources/HospitalNotificationMessage-STIN.xml"/>  
+           <reference value="/FHIRSandbox/MedCom/HospitalNoti-sent/Userstory/_reference/resources/HospitalNotificationMessage-STIN.xml"/>  
         </resource> 
-    </fixture>  
+    </fixture> 
+     
 	<profile id="hospitalnotification-profile">
 		<reference value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-message"/>
 	</profile>
 	<variable>
-	<name value="Encounteridentifier"/>
-	<path value="Bundle.entry.resource.ofType(Encounter)."/>
-	<sourceId value="patient-fixture"/>
-    </variable> 
-	<test id="01-Provenance-activity-code">
-		<name value="HospitalNotification"/>
+		<name value="encounterIdentifier"/>
+		<!-- <expression value="Bundle.entry.resource.ofType(Encounter).identifier.value"/> 
+		<sourceId value="bundle-create1"/> -->
+		<description value="Enter the bundle.entry.resource.ofType(Encounter).identifier.value."/>
+		<hint value="Encounter Identifier]"/>
+	</variable>
+	<test id="01-Use case S1 Admit patient">
+		<name value="HospitalNotification-S1"/>
 		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
   
 		 <action>
@@ -70,8 +73,8 @@
 				<accept value="xml"/>
 				<destination value="1"/>
 				<encodeRequestUrl value="true"/>
-				<origin value="1"/>
-				<sourceId value="bundle-create"/>
+				<origin value="1"/> 
+			 <sourceId value="bundle-create"/>
 			</operation>
 		</action> 
 	 <!-- 	<action>
@@ -149,4 +152,109 @@
 			</assert>
 		</action>
 	</test>
+<test id="02-Use case S3">
+		<name value="HospitalNotification-S3"/>
+		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
+  
+		 <action>
+			<operation>
+				<type>
+					<system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>
+					<code value="create"/>
+				</type>
+				<resource value="Bundle"/>
+				<description value="post the hospitalNotification and verify the contents."/>
+				<accept value="xml"/>
+				<destination value="1"/>
+				<encodeRequestUrl value="true"/>
+				<origin value="1"/>
+				<sourceId value="bundle-create"/>
+			</operation>
+		</action> 
+	 <!-- 	<action>
+ <assert>
+ <description value="Validate of hospital notification."/>
+  <direction value="request"/>
+    <validateProfileId value="hospitalnotification-profile"></validateProfileId>
+    <warningOnly value="false"/>
+  </assert>
+</action>
+ -->
+		<action>
+			<assert>
+				<description value="Confirm that the client requested an Accept of the FHIR XML mime type 'application/fhir+xml'. Warning only to allow for review of all asserts."/>
+				<direction value="request"/>
+				<headerField value="Accept"/>
+				<operator value="contains"/>
+				<value value="application/fhir+xml"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the client requested a Content-Type of the FHIR XML format."/>
+				<direction value="request"/>
+				<contentType value="xml"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the client request payload contains a Bundle resource type."/>
+				<direction value="request"/>
+				<resource value="Bundle"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the request resource contains the expected evetCoding code."/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(MessageHeader).event.as(Coding).select(code = 'hospital-notification-message').allTrue()"/>
+				<operator value="equals"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the request resource contains the expected activity code."/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.coding.code"/>
+				<operator value="equals"/>
+				<value value="discharge-inpatient-home"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the request resource contains the expected Encounter class code."/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(Encounter).class.code"/>
+				<operator value="equals"/>
+				<value value="IMP"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the request resource contains the expected status"/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(Encounter).status"/>
+				<operator value="equals"/>
+				<value value="finished"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the Encounter.identifier is equal to S1 test "/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(Encounter).identifier.value"/>
+				<operator value="equals"/>
+				<value value="${encounterIdentifier}"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+	</test>
+
 </TestScript>
