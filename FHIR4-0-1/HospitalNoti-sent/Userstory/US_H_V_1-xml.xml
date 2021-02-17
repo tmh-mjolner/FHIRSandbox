@@ -52,9 +52,9 @@
 		<reference value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-message"/>
 	</profile>
 	<variable> 
-        <name value="patientResourceId"/>  
+        <name value="encounterResourceIdentifier"/>  
         <expression value="Bundle.entry.resource.ofType(Encounter).identifier.value"/>
-        <sourceId value="patient-create-search-response"/> 
+        <sourceId value="encounter-create-identifier"/> 
     </variable>  
 	<test id="01-Use case S1 Admit patient">
 		<name value="HospitalNotification-S1"/>
@@ -72,19 +72,11 @@
 				<destination value="1"/>
 				<encodeRequestUrl value="true"/>
 				<origin value="1"/> 
+			  <responseId value="encounter-create-identifier"/> 
 			 <sourceId value="bundle-create"/>
-			 <responseId value="patient-create-search-response"/> 
 			</operation>
 		</action> 
-	 <!-- 	<action>
- <assert>
- <description value="Validate of hospital notification."/>
-  <direction value="request"/>
-    <validateProfileId value="hospitalnotification-profile"></validateProfileId>
-    <warningOnly value="false"/>
-  </assert>
-</action>
- -->
+	 
 		<action>
 			<assert>
 				<description value="Confirm that the client requested an Accept of the FHIR XML mime type 'application/fhir+xml'. Warning only to allow for review of all asserts."/>
@@ -251,7 +243,7 @@
 				<direction value="request"/>
 				<expression value="Bundle.entry.resource.ofType(Encounter).identifier.value"/>
 				<operator value="equals"/>
-				<value value="${patientResourceId}"/>
+				<value value="${encounterResourceIdentifier}"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
