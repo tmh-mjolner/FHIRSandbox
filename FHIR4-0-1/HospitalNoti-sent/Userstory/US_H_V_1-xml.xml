@@ -51,13 +51,11 @@
 	<profile id="hospitalnotification-profile">
 		<reference value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-message"/>
 	</profile>
-	<variable>
-		<name value="encounterIdentifier"/>
-		<!-- <expression value="Bundle.entry.resource.ofType(Encounter).identifier.value"/> 
-		<sourceId value="bundle-create1"/> -->
-		<description value="Enter the bundle.entry.resource.ofType(Encounter).identifier.value."/>
-		<hint value="Encounter Identifier]"/>
-	</variable>
+	<variable> 
+        <name value="patientResourceId"/>  
+        <expression value="Bundle.entry.resource.ofType(Encounter).identifier.value"/>
+        <sourceId value="patient-create-search-response"/> 
+    </variable>  
 	<test id="01-Use case S1 Admit patient">
 		<name value="HospitalNotification-S1"/>
 		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
@@ -75,6 +73,7 @@
 				<encodeRequestUrl value="true"/>
 				<origin value="1"/> 
 			 <sourceId value="bundle-create"/>
+			 <responseId value="patient-create-search-response"/> 
 			</operation>
 		</action> 
 	 <!-- 	<action>
@@ -151,6 +150,7 @@
 				<warningOnly value="false"/>
 			</assert>
 		</action>
+		
 	</test>
 <test id="02-Use case S3">
 		<name value="HospitalNotification-S3"/>
@@ -251,7 +251,7 @@
 				<direction value="request"/>
 				<expression value="Bundle.entry.resource.ofType(Encounter).identifier.value"/>
 				<operator value="equals"/>
-				<value value="${encounterIdentifier}"/>
+				<value value="${patientResourceId}"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
