@@ -60,6 +60,11 @@
         <name value="headerResourceRefference"/>  
         <expression value="Bundle.entry[0].fullUrl"/>
         <sourceId value="encounter-create-identifier"/> 
+    </variable> 
+    <variable> 
+        <name value="firstEpisodeOfCareIdentifier"/>  
+        <expression value="Bundle.entry.resource.ofType(Encounter).episodeOfCare.identifier.value"/>
+        <sourceId value="encounter-create-identifier"/> 
     </variable>  
 	<test id="01-Use case S1 Admit patient">
 		<name value="HospitalNotification-S1"/>
@@ -259,6 +264,16 @@
 				<expression value="Bundle.entry.resource.ofType(Provenance)[2].entity.what.reference"/>
 				<operator value="equals"/>
 				<value value="${headerResourceRefference}"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the EpisodeOfCareIdentifier is equal to S1 "/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(Encounter).episodeOfCare.identifier.value"/>
+				<operator value="equals"/>
+				<value value="${firstEpisodeOfCareIdentifier}"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
