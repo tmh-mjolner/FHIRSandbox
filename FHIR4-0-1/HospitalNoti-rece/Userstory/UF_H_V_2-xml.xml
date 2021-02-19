@@ -25,20 +25,14 @@
 	</contact>
 	<description value="Testing correct use of status admit-inpatient"/>
 	<copyright value="MedCom 2021"/>
-	<!-- <origin>
+
+	<origin>
 		<index value="1"/>
 		<profile>
 			<system value="http://terminology.hl7.org/CodeSystem/testscript-profile-origin-types"/>
 			<code value="FHIR-Client"/>
 		</profile>
-	</origin> -->
-	<fixture id="bundle-create-STIN">
-		<autocreate value="false"/>
-		<autodelete value="false"/>
-		<resource>
-			<reference value="/FHIRSandbox/MedCom/HospitalNoti-sent/Userstory/_reference/resources/HospitalNotificationMessage-STIN.xml"/>
-		</resource>
-	</fixture>
+	</origin>
 	<destination>
 		<index value="1"/>
 		<profile>
@@ -46,75 +40,122 @@
 			<code value="FHIR-Server"/>
 		</profile>
 	</destination>
+	<fixture id="bundle-create-STIN">
+		<autocreate value="false"/>
+		<autodelete value="false"/>
+		<resource>
+			<reference value="/FHIRSandbox/MedCom/HospitalNoti-rece/Userstory/_reference/resources/HospitalNotificationMessage-STIN.xml"/>
+		</resource>
+	</fixture>
+	<fixture id="bundle-create-SLHJ">
+		<autocreate value="false"/>
+		<autodelete value="false"/>
+		<resource>
+			<reference value="/FHIRSandbox/MedCom/HospitalNoti-rece/Userstory/_reference/resources/HospitalNotificationMessage-SLHJ.xml"/>
+		</resource>
+	</fixture>
 	<profile id="hospitalnotification-profile">
 		<reference value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-message"/>
 	</profile>
-	<variable>
-		<name value="bundleResourceId"/>
-		<path value="Bundle/id"/>
-		<sourceId value="patient-create-search-response"/>
-	</variable>
-	<variable>
-		<name value="messageHeaderid"/>
-		<path value="Bundle.entry.resource.ofType(MessageHeader).id"/>
-		<sourceId value="bundle-create-STIN"/>
-	</variable>
-	<setup>
-		
-		<!-- <action>
-			<operation>
-				<type>
-					<system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>
-					<code value="delete"/>
-				</type>
-				<resource value="Patient"/>
-				<description value="System-generated search and delete operations from conditional delete on Bundle identifier to insure the patient does not exist on the server."/>
-				<accept value="xml"/>
-				<encodeRequestUrl value="true"/>
-				<params value="?identifier=${messageHeaderid}"/>
-			</operation>
-		</action>
- -->
-		<action>
-			<operation>
-				<type>
-					<system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>
-					<code value="create"/>
-				</type>
-				<resource value="Bundle"/>
-				<description value="Create the Bundle resource in xml format on the destination server."/>
-				<accept value="xml"/>
-				<contentType value="xml"/>
-				<encodeRequestUrl value="true"/>
-				<sourceId value="bundle-create-STIN"/>
-			</operation>
-		</action>
-		<action>
-			<operation>
-				<type>
-					<system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>
-					<code value="search"/>
-				</type>
-				<resource value="Bundle"/>
-				<description value="Search for the created Patient by the unique identifier."/>
-				<accept value="xml"/>
-				<encodeRequestUrl value="true"/>
-				<params value="?Bundle.entry.resource.ofType(MessageHeader).id=${messageHeaderid}"/>
-				<responseId value="patient-create-search-response"/>
-			</operation>
-		</action>
-		<action>
-			<assert>
-				<description value="Confirm that the returned HTTP status is 200(OK)."/>
-				<direction value="response"/>
-				<responseCode value="200"/>
-				<warningOnly value="false"/>
-			</assert>
-		</action>
-	</setup>
-	<test id="01-Provenance-activity-code - Use case K1">
-		<name value="HospitalNotification"/>
-		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
+	<variable> 
+        <name value="bundleId"/>  
+        <expression value="Bundle.id"/>
+        <sourceId value="bundle-id-responseK3"/> 
+    </variable>
+    <variable> 
+        <name value="destinationUri"/>  
+        <expression value="Bundle.entry.resource.ofType(MessageHeader).destination.endpoint"/>
+        <sourceId value="bundle-create-STIN"/> 
+    </variable>
+	<variable> 
+        <name value="bundleIdK3"/>  
+        <expression value="Bundle.id"/>
+        <sourceId value="bundle-id-responseK3"/> 
+    </variable>
+    <variable> 
+        <name value="destinationUriK3"/>  
+        <expression value="Bundle.entry.resource.ofType(MessageHeader).destination.endpoint"/>
+        <sourceId value="bundle-create-SLHJ"/> 
+    </variable>
+    
+    <setup> 
+    <!-- K1 setup -->
+    <action> 
+        <operation> 
+                <type> 
+                    <system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>  
+                    <code value="delete"/> 
+                </type>  
+                <resource value="Bundle"/>  
+                <description value="System-generated search and delete operations from conditional delete on Bundle MessageHeader).destination.endpoint"/>  
+                <accept value="xml"/>  
+                <encodeRequestUrl value="true"/>  
+                <params value="?message.destination-uri=${destinationUri}"/> 
+            </operation> 
+        </action> 
+    <action> 
+            <operation> 
+                <type> 
+                    <system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>  
+                    <code value="create"/> 
+                </type>  
+                <resource value="Bundle"/>  
+                <description value="Create the Bundle resource in XML format on the destination server."/>  
+                <accept value="xml"/>  
+                <contentType value="xml"/>  
+                <encodeRequestUrl value="true"/>   
+                <sourceId value="bundle-create-STIN"/> 
+            </operation> 
+        </action>
+        <action> 
+            <assert> 
+                <description value="Confirm that the returned HTTP status is 201(Created)."/>  
+                <direction value="response"/>  
+                <responseCode value="201"/>  
+                <warningOnly value="false"/> 
+            </assert> 
+        </action> 
+ <!-- K3 setup -->
+    <action> 
+        <operation> 
+                <type> 
+                    <system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>  
+                    <code value="delete"/> 
+                </type>  
+                <resource value="Bundle"/>  
+                <description value="System-generated search and delete operations from conditional delete on Bundle MessageHeader).destination.endpoint"/>  
+                <accept value="xml"/>  
+                <encodeRequestUrl value="true"/>  
+                <params value="?message.destination-uri=${destinationUriK3}"/> 
+            </operation> 
+        </action> 
+    <action> 
+            <operation> 
+                <type> 
+                    <system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>  
+                    <code value="create"/> 
+                </type>  
+                <resource value="Bundle"/>  
+                <description value="Create the Bundle resource in XML format on the destination server."/>  
+                <accept value="xml"/>  
+                <contentType value="xml"/>  
+                <encodeRequestUrl value="true"/>   
+                <sourceId value="bundle-create-SLHJ"/> 
+            </operation> 
+        </action>
+        <action> 
+            <assert> 
+                <description value="Confirm that the returned HTTP status is 201(Created)."/>  
+                <direction value="response"/>  
+                <responseCode value="201"/>  
+                <warningOnly value="false"/> 
+            </assert> 
+        </action> 
+ 
+        </setup> 
+	<test id="01-STIN-admitted">
+		<name value="HospitalNotification-STIN"/>
+		<description value="GET a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
   
 		 <action>
 			<operation>
@@ -128,7 +169,35 @@
 				<destination value="1"/>
 				<encodeRequestUrl value="true"/>
 				<origin value="1"/>
-				<params value="/0102030405"/>
+				<params value="?message.destination-uri=${destinationUri}"/>
+			</operation>
+		</action> 
+			<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 200(OK)."/>
+				<direction value="response"/>
+				<responseCode value="200"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+	</test>
+	<test id="02-SLHJ-end-leave">
+		<name value="HospitalNotification-SLHJ"/>
+		<description value="GET a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
+  
+		 <action>
+			<operation>
+				<type>
+					<system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>
+					<code value="read"/>
+				</type>
+				<resource value="Bundle"/>
+				<description value="The patient does not show up after ended leave -SLHJ "/>
+				<accept value="xml"/>
+				<destination value="1"/>
+				<encodeRequestUrl value="true"/>
+				<origin value="1"/>
+				<params value="?message.destination-uri=${destinationUriK3}"/>
 			</operation>
 		</action> 
 			<action>
