@@ -44,10 +44,16 @@
         <autocreate value="false"/>  
         <autodelete value="false"/>  
         <resource> 
-           <reference value="/FHIRSandbox/MedCom/HospitalNoti-sent/Userstory/_reference/resources/HospitalNotificationMessage-STIN.xml"/>  
+           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-STIN-S1.xml"/>  
         </resource> 
     </fixture> 
-     
+     <fixture id="bundle-createSLHJ"> 
+        <autocreate value="false"/>  
+        <autodelete value="false"/>  
+        <resource> 
+           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-SLHJ-S3.xml"/>  
+        </resource> 
+    </fixture> 
 	<profile id="hospitalnotification-profile">
 		<reference value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-message"/>
 	</profile>
