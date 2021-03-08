@@ -227,9 +227,7 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected activity code."/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance).first().activity.coding.code"/>
-				<operator value="equals"/>
-				<value value="discharge-inpatient-home"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.coding.code.where('discharge-inpatient-home').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -247,9 +245,7 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected status"/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Encounter).status"/>
-				<operator value="equals"/>
-				<value value="finished"/>
+				<expression value="Bundle.entry.resource.ofType(Encounter).status.where('finished').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -267,9 +263,7 @@
 			<assert>
 				<description value="Confirm that the what refferece S1 MessageHeader "/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance)[1].entity.what.reference"/>
-				<operator value="equals"/>
-				<value value="${headerResourceRefference}"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).where(entity.what.reference ='${headerResourceRefference}')"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
