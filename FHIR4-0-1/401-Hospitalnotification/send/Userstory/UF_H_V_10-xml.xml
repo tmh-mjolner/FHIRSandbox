@@ -55,6 +55,20 @@
         <resource> 
            <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-SLHJ-UF_H_V_10.xml"/>  
         </resource> 
+    </fixture>
+    <fixture id="bundle-createSLOR"> 
+        <autocreate value="false"/>  
+        <autodelete value="false"/>  
+        <resource> 
+           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-SLOR-UF_H_V_10.xml"/>  
+        </resource> 
+    </fixture> 
+    <fixture id="bundle-createSLHJ1"> 
+        <autocreate value="false"/>  
+        <autodelete value="false"/>  
+        <resource> 
+           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-SLHJ1-UF_H_V_10.xml"/>  
+        </resource> 
     </fixture> 
 	<profile id="hospitalnotification-profile">
 		<reference value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-message"/>
