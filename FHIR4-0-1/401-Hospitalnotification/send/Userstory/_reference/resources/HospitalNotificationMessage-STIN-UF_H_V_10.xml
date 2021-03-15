@@ -5,7 +5,7 @@
              value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-message"/>
   </meta>
   <type value="message"/>
-  <timestamp value="2020-10-15T13:44:14Z"/>
+  <timestamp value="2021-03-10T13:44:14Z"/>
   <entry>
     <fullUrl value="MessageHeader/72c2d143-fb16-45c8-ba3d-fb93b8372222"/>
     <resource>
@@ -145,7 +145,7 @@
           </identifier>
         </episodeOfCare>
         <period>
-          <start value="2020-10-15T13:44:14Z"/>
+          <start value="2021-03-10T13:44:14Z"/>
         </period>
         <serviceProvider>
           <reference value="Organization/12ee0dde-a672-462f-820d-5efe832d73c9"/>
@@ -219,8 +219,8 @@
         <target>
           <reference value="MessageHeader/72c2d143-fb16-45c8-ba3d-fb93b8372222"/>
         </target>
-        <occurredDateTime value="2020-10-15T13:44:14Z"/>
-        <recorded value="2020-10-15T13:45:15Z"/>
+        <occurredDateTime value="2021-03-10T13:44:14Z"/>
+        <recorded value="2021-03-10T13:45:15Z"/>
         <activity>
           <coding>
             <system
