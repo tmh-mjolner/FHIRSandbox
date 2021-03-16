@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestScript xmlns="http://hl7.org/fhir">
-	<id value="hospitalNotification-message-stay-acute-ambulant"/>
+	<id value="hospitalNotification-message-admit-leave-noreturn-end"/>
 	<meta>
 		<profile value="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript"/>
 	</meta>
 	<text>
 		<status value="generated"/>
-		<div xmlns="http://www.w3.org/1999/xhtml"><p>medcom-hospitalNotification-message testing of status "admit-emergency"- XML</p></div>
+		<div xmlns="http://www.w3.org/1999/xhtml"><p>medcom-hospitalNotification-message testing of status "admit-impatient"- XML</p></div>
 	</text>
 
 	<url value="http://medcom.dk"/>
-	<name value="hospitalNotification-message-admit-emergency-xml"/>
-	<title value="hospitalNotification-message admit-emergency create XML"/>
+	<name value="hospitalNotification-message-admit-impatient-xml"/>
+	<title value="hospitalNotification-message admit-impatient never return from leave create XML"/>
 	<status value="active"/>
-	<date value="2021-03-01"/>
+	<date value="2021-03-15"/>
 	<publisher value="MedCom"/>
 	<contact>
 		<name value="Medcom"/>
@@ -23,7 +23,7 @@
 			<use value="work"/>
 		</telecom>
 	</contact>
-	<description value="Testing correct use of status admit-emergency"/>
+	<description value="Patient is admitted at hospital, goes on leave from hospital but never returns after leave"/>
 	<copyright value="MedCom 2021"/>
 
 	<origin>
@@ -261,7 +261,7 @@
 				<description value="Confirm that the what refferece S1 MessageHeader"/>
 				<direction value="request"/>
 				<expression value="Bundle.entry.resource.ofType(Provenance).where(entity.what.reference ='${headerResourceRefference}')"/>
-				<warningOnly value="false"/>
+				<warningOnly value="true"/>
 			</assert>
 		</action>
 		<action> 
@@ -414,7 +414,7 @@
 				<description value="Confirm that the what refferece S1 MessageHeader"/>
 				<direction value="request"/>
 				<expression value="Bundle.entry.resource.ofType(Provenance).where(entity.what.reference ='${headerResourceRefference}')"/>
-				<warningOnly value="false"/>
+				<warningOnly value="true"/>
 			</assert>
 		</action>
 		<action> 

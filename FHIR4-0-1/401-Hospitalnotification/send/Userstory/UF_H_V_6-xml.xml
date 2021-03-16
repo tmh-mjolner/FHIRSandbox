@@ -23,7 +23,7 @@
 			<use value="work"/>
 		</telecom>
 	</contact>
-	<description value="Testing correct use of mistakenly dismiss notitication is sent"/>
+	<description value="Correction: Patient is admitted but the hospital department registered is incorrect"/>
 	<copyright value="MedCom 2025"/>
 
 	<origin>
@@ -266,7 +266,7 @@
 				<description value="Confirm that the what refferece S1 MessageHeader "/>
 				<direction value="request"/>
 				<expression value="Bundle.entry.resource.ofType(Provenance).where(entity.what.reference ='${headerResourceRefference}')"/>
-				<warningOnly value="false"/>
+				<warningOnly value="true"/>
 			</assert>
 		</action>
 		<action>

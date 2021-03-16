@@ -264,7 +264,7 @@
 				<description value="Confirm that the what refferece S1 MessageHeader "/>
 				<direction value="request"/>
 				<expression value="Bundle.entry.resource.ofType(Provenance).where(entity.what.reference ='${headerResourceRefference}')"/>
-				<warningOnly value="false"/>
+				<warningOnly value="true"/>
 			</assert>
 		</action>
 		<action>

@@ -23,7 +23,7 @@
 			<use value="work"/>
 		</telecom>
 	</contact>
-	<description value="Testing correct use of status admit-emergency"/>
+	<description value="Patient is admitted at hospital and a day after discharged (emergency)"/>
 	<copyright value="MedCom 2021"/>
 
 	<origin>
@@ -264,7 +264,7 @@
 				<description value="Confirm that the what refferece S1 MessageHeader "/>
 				<direction value="request"/>
 				<expression value="Bundle.entry.resource.ofType(Provenance).where(entity.what.reference ='${headerResourceRefference}')"/>
-				<warningOnly value="false"/>
+				<warningOnly value="true"/>
 			</assert>
 		</action>
 		<action>
