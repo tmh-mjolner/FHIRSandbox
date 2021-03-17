@@ -6,15 +6,14 @@
 	</meta>
 	<text>
 		<status value="generated"/>
-		<div xmlns="http://www.w3.org/1999/xhtml"><p>medcom-hospitalNotification-message Patient is admitted at hospital, transferred to another department, and finally discharged to home
-- XML</p></div>
+		<div xmlns="http://www.w3.org/1999/xhtml"><p>medcom-hospitalNotification-message Patient is admitted at hospital, transfers himself to another hospital (same region), and is finally dicharged to home- XML</p></div>
 	</text>
 
 	<url value="http://medcom.dk"/>
 	<name value="hospitalNotification-message-admit-transferred-internal-xml"/>
 	<title value="hospitalNotification-message admit-emergency create XML"/>
 	<status value="active"/>
-	<date value="2021-03-01"/>
+	<date value="2021-03-17"/>
 	<publisher value="MedCom"/>
 	<contact>
 		<name value="Medcom"/>
@@ -24,7 +23,7 @@
 			<use value="work"/>
 		</telecom>
 	</contact>
-	<description value="Patient is admitted at hospital, transferred to another department, and finally discharged to home"/>
+	<description value="Patient is admitted at hospital, transfers himself to another hospital (same region), and is finally dicharged to home"/>
 	<copyright value="MedCom 2021"/>
 
 	<origin>
@@ -45,23 +44,30 @@
         <autocreate value="false"/>  
         <autodelete value="false"/>  
         <resource> 
-           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-STIN-UF_H_V_10.xml"/>  
+           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-STIN-UF_H_V_14.xml"/>  
         </resource> 
     </fixture> 
-    <fixture id="bundle-createSTIN2"> 
+    <fixture id="bundle-createSLHJ"> 
         <autocreate value="false"/>  
         <autodelete value="false"/>  
         <resource> 
-           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-STIN2-UF_H_V_12.xml"/>  
+           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-SLHJ-UF_H_V_14.xml"/>  
         </resource> 
     </fixture> 
-     <fixture id="bundle-createSLHJ"> 
+     <fixture id="bundle-createSTIN2"> 
         <autocreate value="false"/>  
         <autodelete value="false"/>  
         <resource> 
-           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-SLHJ-UF_H_V_10.xml"/>  
+           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-STIN2-UF_H_V_14.xml"/>  
         </resource> 
     </fixture>
+    <fixture id="bundle-createSLHJ2"> 
+        <autocreate value="false"/>  
+        <autodelete value="false"/>  
+        <resource> 
+           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-SLHJ2-UF_H_V_14.xml"/>  
+        </resource> 
+    </fixture> 
 	<profile id="hospitalnotification-profile">
 		<reference value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-message"/>
 	</profile>
@@ -84,15 +90,15 @@
     </variable>
  <!-- TEST 2 --> 
  <variable> 
-        <name value="headerResourceRefferenceS62"/>  
+        <name value="headerResourceRefferenceS71b"/>  
         <expression value="Bundle.entry[0].fullUrl"/>
-        <sourceId value="02-S1IntTransf"/> 
+        <sourceId value="02-S71b-AnoHosp"/> 
     </variable>
  <!-- TEST 3 -->  
  <variable> 
-        <name value="headerResourceRefferenceS5"/>  
+        <name value="headerResourceRefferenceS72"/>  
         <expression value="Bundle.entry[0].fullUrl"/>
-        <sourceId value="03-S5EndLeave"/> 
+        <sourceId value="03-S72admitPatient"/> 
     </variable>
      
 	<test id="01-Use case S1 Admit patient">
@@ -182,7 +188,7 @@
 			</assert>
 		</action>
 	</test>
-	<test id="02-Use case S1 -Transfere Internal">
+	<test id="02-Use case S7.1b -Transfer a patient to another hospital in another region (in-itial hospital, the patient is responsible for transportation)">
 		<name value="HospitalNotification-S4"/>
 		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
   
@@ -198,8 +204,8 @@
 				<destination value="1"/>
 				<encodeRequestUrl value="true"/>
 				<origin value="1"/>
-				<responseId value="02-S1IntTransf"/>
-				<sourceId value="bundle-createSTIN2"/>
+				<responseId value="02-S71b-AnoHosp"/>
+				<sourceId value="bundle-createSLHJ"/>
 			</operation>
 		</action> 
 	 <!-- 	<action>
@@ -250,7 +256,7 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected activity code."/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='start-leave-inpatient').exists()"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='discharge-inpatient-home').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -260,7 +266,7 @@
 				<direction value="request"/>
 				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code = 'admit-inpatient').count()"/>
 				<operator value="equals"/>
-				<value value="2"/>
+				<value value="1"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -296,7 +302,7 @@
 				<direction value="request"/>
 				<expression value="Bundle.entry.resource.ofType(Encounter).status"/>
 				<operator value="equals"/>
-				<value value="in-progress"/>
+				<value value="finished"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -334,12 +340,13 @@
 					<code value="create"/>
 				</type>
 				<resource value="Bundle"/>
-				<description value="post the hospitalNotification and verify the contents."/>
+				<description value="post the hospitalNotification -STIN -Receive patient from another hospital in the same region and send notification"/>
 				<accept value="xml"/>
 				<destination value="1"/>
 				<encodeRequestUrl value="true"/>
 				<origin value="1"/>
-				<sourceId value="bundle-createSLHJ"/>
+				<responseId value="03-S72admitPatient"/>
+				<sourceId value="bundle-createSTIN2"/>
 			</operation>
 		</action> 
 	 <!-- 	<action>
@@ -404,14 +411,7 @@
 				<warningOnly value="false"/>
 			</assert>
 		</action>
-		<action>
-			<assert>
-				<description value="Confirm that the what refferece S6.2 MessageHeader"/>
-				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance).where(entity.what.reference ='${headerResourceRefferenceS62}')"/>
-				<warningOnly value="true"/>
-			</assert>
-		</action>
+	
 		<action> 
             <assert> 
                 <description value="Confirm that the taget refferece S1 MessageHeader"/>  
@@ -424,7 +424,156 @@
             <assert> 
                 <description value="Confirm that the taget refferece S4 MessageHeader"/>  
                 <direction value="request"/>  
-                <expression value="Bundle.entry.resource.ofType(Provenance).where(target.reference = '${headerResourceRefferenceS62}')"/>  
+                <expression value="Bundle.entry.resource.ofType(Provenance).where(target.reference = '${headerResourceRefferenceS71b}')"/>  
+                <warningOnly value="false"/> 
+            </assert> 
+        </action>
+       	<action>
+			<assert>
+				<description value="Confirm that the what refferece S7.1b MessageHeader"/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).where(entity.what.reference ='${headerResourceRefferenceS71b}')"/>
+				<warningOnly value="true"/>
+			</assert>
+		</action>
+		
+		<action>
+			<assert>
+				<description value="Confirm that the request resource contains the expected Encounter class code."/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(Encounter).class.code"/>
+				<operator value="equals"/>
+				<value value="IMP"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the request resource contains the expected status"/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(Encounter).status"/>
+				<operator value="equals"/>
+				<value value="in-progress"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the Encounter.identifier is equal to S1 test"/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(Encounter).identifier.value"/>
+				<operator value="equals"/>
+				<value value="${encounterResourceIdentifier}"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the EpisodeOfCareIdentifier is equal to S1"/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(Encounter).episodeOfCare.identifier.value"/>
+				<operator value="equals"/>
+				<value value="${firstEpisodeOfCareIdentifier}"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+	</test>
+	<test id="04-Use case S3 -end hospitalstay">
+		<name value="HospitalNotification-S32"/>
+		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
+  
+		 <action>
+			<operation>
+				<type>
+					<system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>
+					<code value="create"/>
+				</type>
+				<resource value="Bundle"/>
+				<description value="post the hospitalNotification and verify the contents."/>
+				<accept value="xml"/>
+				<destination value="1"/>
+				<encodeRequestUrl value="true"/>
+				<origin value="1"/>
+				<sourceId value="bundle-createSLHJ2"/>
+			</operation>
+		</action> 
+	 <!-- 	<action>
+ <assert>
+ <description value="Validate of hospital notification."/>
+  <direction value="request"/>
+    <validateProfileId value="hospitalnotification-profile"></validateProfileId>
+    <warningOnly value="false"/>
+  </assert>
+</action>
+ -->
+		<action>
+			<assert>
+				<description value="Confirm that the client requested an Accept of the FHIR XML mime type 'application/fhir+xml'. Warning only to allow for review of all asserts."/>
+				<direction value="request"/>
+				<headerField value="Accept"/>
+				<operator value="contains"/>
+				<value value="application/fhir+xml"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the client requested a Content-Type of the FHIR XML format."/>
+				<direction value="request"/>
+				<contentType value="xml"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the client request payload contains a Bundle resource type."/>
+				<direction value="request"/>
+				<resource value="Bundle"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the request resource contains the expected evetCoding code."/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(MessageHeader).event.as(Coding).select(code = 'hospital-notification-message').allTrue()"/>
+				<operator value="equals"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+	<action>	
+			<assert>
+				<description value="Confirm that the request resource contains activity code in both Provenance."/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code = 'discharge-inpatient-home').count()"/>
+				<operator value="equals"/>
+				<value value="2"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the request resource contains activity code in both Provenance."/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code = 'admit-inpatient').count()"/>
+				<operator value="equals"/>
+				<value value="2"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the what refferece S1 MessageHeader"/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).where(entity.what.reference ='${headerResourceRefference}')"/>
+				<warningOnly value="true"/>
+			</assert>
+		</action>
+		<action> 
+            <assert> 
+                <description value="Confirm that the taget refferece S1 MessageHeader"/>  
+                <direction value="request"/>  
+                <expression value="Bundle.entry.resource.ofType(Provenance).where(target.reference = '${headerResourceRefference}')"/>  
                 <warningOnly value="false"/> 
             </assert> 
         </action> 

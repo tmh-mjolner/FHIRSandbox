@@ -227,7 +227,7 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected activity code."/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance).activity.coding.code.where('cancel-admit-inpatient').exists()"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='cancel-admit-inpatient').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>

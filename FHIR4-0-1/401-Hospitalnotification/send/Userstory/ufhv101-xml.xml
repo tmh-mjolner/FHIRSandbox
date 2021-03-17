@@ -257,7 +257,7 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected activity code."/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance).activity.coding.code.where('start-leave-inpatient').exists()"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='start-leave-inpatient').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -265,7 +265,7 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected activity code."/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance).activity.coding.code.where('admit-inpatient').exists()"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='admit-inpatient').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -395,7 +395,7 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected activity code."/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance).activity.coding.code.where('end-leave-inpatient').exists()"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='end-leave-inpatient').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -403,7 +403,7 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected activity code."/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance).activity.coding.code.where('start-leave-inpatient').exists()"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='start-leave-inpatient').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -411,7 +411,7 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected activity code."/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance).activity.coding.code.where('admit-inpatient').exists()"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='admit-inpatient').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -547,7 +547,7 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected activity code."/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance).activity.coding.code.where('discharge-inpatient-home').exists()"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='discharge-inpatient-home').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -555,7 +555,7 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected activity code."/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance).activity.coding.code.where('end-leave-inpatient').exists()"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='end-leave-inpatient').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -563,7 +563,7 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected activity code."/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance).activity.coding.code.where('start-leave-inpatient').exists()"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='start-leave-inpatient').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -571,7 +571,7 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected activity code."/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance).activity.coding.code.where('admit-inpatient').exists()"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='admit-inpatient').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
