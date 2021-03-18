@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestScript xmlns="http://hl7.org/fhir">
+	<id value="receive-notification-about-admission-receiving"/>
+	<meta>
+		<profile value="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript"/>
+	</meta>
+	<text>
+		<status value="generated"/>
+		<div xmlns="http://www.w3.org/1999/xhtml"><p>medcom-hospitalNotification-message testing of receiving status "admit-inpatient"- XML</p></div>
+	</text>
+
+	<url value="http://medcom.dk"/>
+	<name value="receive-notification-about-admission"/>
+	<title value="hospitalNotification-message admit-inpatient receiving XML"/>
+	<status value="active"/>
+	<date value="2021-01-05"/>
+	<publisher value="MedCom"/>
+	<contact>
+		<name value="Medcom"/>
+		<telecom>
+			<system value="email"/>
+			<value value="medcom@medcom.dk"/>
+			<use value="work"/>
+		</telecom>
+	</contact>
+	<description value="Testing correct use of status admit-inpatient"/>
+	<copyright value="MedCom 2021"/>
+
+	<origin>
+		<index value="1"/>
+		<profile>
+			<system value="http://terminology.hl7.org/CodeSystem/testscript-profile-origin-types"/>
+			<code value="FHIR-Client"/>
+		</profile>
+	</origin>
+	<destination>
+		<index value="1"/>
+		<profile>
+			<system value="http://terminology.hl7.org/CodeSystem/testscript-profile-destination-types"/>
+			<code value="FHIR-Server"/>
+		</profile>
+	</destination>
+	<fixture id="bundle-create-STIN">
+		<autocreate value="false"/>
+		<autodelete value="false"/>
+		<resource>
+			<reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/receive/Userstory/_reference/resources/HospitalNotificationMessage-STIN-K1.xml"/>
+		</resource>
+	</fixture>
+	<fixture id="bundle-create-SLHJ">
+		<autocreate value="false"/>
+		<autodelete value="false"/>
+		<resource>
+			<reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/receive/Userstory/_reference/resources/HospitalNotificationMessage-SLHJ-K3.xml"/>
+		</resource>
+	</fixture>
+	<profile id="hospitalnotification-profile">
+		<reference value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-message"/>
+	</profile>
+	<variable> 
+        <name value="bundleId"/>  
+        <expression value="Bundle.id"/>
+        <sourceId value="bundle-id-responseK3"/> 
+    </variable>
+    <variable> 
+        <name value="destinationUri"/>  
+        <expression value="Bundle.entry.resource.ofType(MessageHeader).destination.endpoint"/>
+        <sourceId value="bundle-create-STIN"/> 
+    </variable>
+	<variable> 
+        <name value="bundleIdK3"/>  
+        <expression value="Bundle.id"/>
+        <sourceId value="bundle-id-responseK3"/> 
+    </variable>
+    <variable> 
+        <name value="destinationUriK3"/>  
+        <expression value="Bundle.entry.resource.ofType(MessageHeader).destination.endpoint"/>
+        <sourceId value="bundle-create-SLHJ"/> 
+    </variable>
+    
+    <setup> 
+    <!-- K1 setup -->
+    <action> 
+        <operation> 
+                <type> 
+                    <system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>  
+                    <code value="delete"/> 
+                </type>  
+                <resource value="Bundle"/>  
+                <description value="System-generated search and delete operations from conditional delete on Bundle MessageHeader).destination.endpoint"/>  
+                <accept value="xml"/>  
+                <encodeRequestUrl value="true"/>  
+                <params value="?message.destination-uri=${destinationUri}"/> 
+            </operation> 
+        </action> 
+    <action> 
+            <operation> 
+                <type> 
+                    <system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>  
+                    <code value="create"/> 
+                </type>  
+                <resource value="Bundle"/>  
+                <description value="Create the Bundle resource in XML format on the destination server."/>  
+                <accept value="xml"/>  
+                <contentType value="xml"/>  
+                <encodeRequestUrl value="true"/>   
+                <sourceId value="bundle-create-STIN"/> 
+            </operation> 
+        </action>
+        <action> 
+            <assert> 
+                <description value="Confirm that the returned HTTP status is 201(Created)."/>  
+                <direction value="response"/>  
+                <responseCode value="201"/>  
+                <warningOnly value="false"/> 
+            </assert> 
+        </action> 
+ <!-- K3 setup -->
+    <action> 
+        <operation> 
+                <type> 
+                    <system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>  
+                    <code value="delete"/> 
+                </type>  
+                <resource value="Bundle"/>  
+                <description value="System-generated search and delete operations from conditional delete on Bundle MessageHeader).destination.endpoint"/>  
+                <accept value="xml"/>  
+                <encodeRequestUrl value="true"/>  
+                <params value="?message.destination-uri=${destinationUriK3}"/> 
+            </operation> 
+        </action> 
+    <action> 
+            <operation> 
+                <type> 
+                    <system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>  
+                    <code value="create"/> 
+                </type>  
+                <resource value="Bundle"/>  
+                <description value="Create the Bundle resource in XML format on the destination server."/>  
+                <accept value="xml"/>  
+                <contentType value="xml"/>  
+                <encodeRequestUrl value="true"/>   
+                <sourceId value="bundle-create-SLHJ"/> 
+            </operation> 
+        </action>
+        <action> 
+            <assert> 
+                <description value="Confirm that the returned HTTP status is 201(Created)."/>  
+                <direction value="response"/>  
+                <responseCode value="201"/>  
+                <warningOnly value="false"/> 
+            </assert> 
+        </action> 
+ 
+        </setup> 
+	<test id="01-STIN-admitted">
+		<name value="HospitalNotification-STIN"/>
+		<description value="GET a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
+  
+		 <action>
+			<operation>
+				<type>
+					<system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>
+					<code value="read"/>
+				</type>
+				<resource value="Bundle"/>
+				<description value="Receive notification about admission -STIN "/>
+				<accept value="xml"/>
+				<destination value="1"/>
+				<encodeRequestUrl value="true"/>
+				<origin value="1"/>
+				<params value="?message.destination-uri=${destinationUri}"/>
+			</operation>
+		</action> 
+			<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 200(OK)."/>
+				<direction value="response"/>
+				<responseCode value="200"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+	</test>
+	<test id="02-SLHJ-end-leave">
+		<name value="HospitalNotification-SLHJ"/>
+		<description value="GET a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
+  
+		 <action>
+			<operation>
+				<type>
+					<system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>
+					<code value="read"/>
+				</type>
+				<resource value="Bundle"/>
+				<description value="The patient does not show up after ended leave -SLHJ "/>
+				<accept value="xml"/>
+				<destination value="1"/>
+				<encodeRequestUrl value="true"/>
+				<origin value="1"/>
+				<params value="?message.destination-uri=${destinationUriK3}"/>
+			</operation>
+		</action> 
+			<action>
+			<assert>
+				<description value="Confirm that the returned HTTP status is 200(OK)."/>
+				<direction value="response"/>
+				<responseCode value="200"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+	</test>
+</TestScript>
