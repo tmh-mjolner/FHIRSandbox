@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestScript xmlns="http://hl7.org/fhir">
-	<id value="hospitalNotification-message-transfere-internal-impatinet"/>
+	<id value="hospitalNotification-message-admit-emergency"/>
 	<meta>
 		<profile value="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript"/>
 	</meta>
 	<text>
 		<status value="generated"/>
-		<div xmlns="http://www.w3.org/1999/xhtml"><p>Patient is admitted at hospital, transferred to another hospital (same region), and finally discharged to home- XML</p></div>
+		<div xmlns="http://www.w3.org/1999/xhtml"><p>medcom-hospitalNotification-message testing of status "admit-inpatient"- XML</p></div>
 	</text>
 
 	<url value="http://medcom.dk"/>
-	<name value="hospitalNotification-message-admit-transferred-internal-xml"/>
-	<title value="hospitalNotification-message admit-emergency create XML"/>
+	<name value="hospitalNotification-message-admit-inpatient-xml-json"/>
+	<title value="hospitalNotification-message admit-inpatient create XML"/>
 	<status value="active"/>
-	<date value="2021-03-16"/>
+	<date value="2021-01-05"/>
 	<publisher value="MedCom"/>
 	<contact>
 		<name value="Medcom"/>
@@ -23,7 +23,7 @@
 			<use value="work"/>
 		</telecom>
 	</contact>
-	<description value="Patient is admitted at hospital, transferred to another hospital (same region), and finally discharged to home"/>
+	<description value="Patient is admitted at hospital and a week after discharged to home (inpatient)"/>
 	<copyright value="MedCom 2021"/>
 
 	<origin>
@@ -84,7 +84,6 @@
 				</type>
 				<resource value="Bundle"/>
 				<description value="post the hospitalNotification and verify the contents."/>
-				<accept value="xml"/>
 				<destination value="1"/>
 				<encodeRequestUrl value="true"/>
 				<origin value="1"/> 
@@ -93,24 +92,8 @@
 			</operation>
 		</action> 
 	 
-		<action>
-			<assert>
-				<description value="Confirm that the client requested an Accept of the FHIR XML mime type 'application/fhir+xml'. Warning only to allow for review of all asserts."/>
-				<direction value="request"/>
-				<headerField value="Accept"/>
-				<operator value="contains"/>
-				<value value="application/fhir+xml"/>
-				<warningOnly value="false"/>
-			</assert>
-		</action>
-		<action>
-			<assert>
-				<description value="Confirm that the client requested a Content-Type of the FHIR XML format."/>
-				<direction value="request"/>
-				<contentType value="xml"/>
-				<warningOnly value="false"/>
-			</assert>
-		</action>
+		
+		
 		<action>
 			<assert>
 				<description value="Confirm that the client request payload contains a Bundle resource type."/>
@@ -172,7 +155,6 @@
 				</type>
 				<resource value="Bundle"/>
 				<description value="post the hospitalNotification and verify the contents."/>
-				<accept value="xml"/>
 				<destination value="1"/>
 				<encodeRequestUrl value="true"/>
 				<origin value="1"/>
@@ -194,7 +176,6 @@
 				<direction value="request"/>
 				<headerField value="Accept"/>
 				<operator value="contains"/>
-				<value value="application/fhir+xml"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -202,7 +183,6 @@
 			<assert>
 				<description value="Confirm that the client requested a Content-Type of the FHIR XML format."/>
 				<direction value="request"/>
-				<contentType value="xml"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>

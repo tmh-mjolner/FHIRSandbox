@@ -6,12 +6,12 @@
 	</meta>
 	<text>
 		<status value="generated"/>
-		<div xmlns="http://www.w3.org/1999/xhtml"><p>Error: Patient is admitted at hospital and by mistake a dismiss notitication is sent- XML</p></div>
+		<div xmlns="http://www.w3.org/1999/xhtml"><p>Error: Patient is admitted at hospital and by mistake a dismiss notitication is sent- XML and json</p></div>
 	</text>
 
 	<url value="http://medcom.dk"/>
-	<name value="hospitalNotification-message-admit-inpatient-xml"/>
-	<title value="hospitalNotification-message admit-inpatient create XML"/>
+	<name value="hospitalNotification-message-admit-inpatient-xml-json"/>
+	<title value="hospitalNotification-message admit-inpatient create XML and json"/>
 	<status value="active"/>
 	<date value="2021-01-20"/>
 	<publisher value="MedCom"/>
@@ -74,7 +74,7 @@
     </variable>  
 	<test id="01-Use case S1 Admit patient">
 		<name value="HospitalNotification-S1"/>
-		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
+		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML or json format."/>
   
 		 <action>
 			<operation>
@@ -84,7 +84,6 @@
 				</type>
 				<resource value="Bundle"/>
 				<description value="post the hospitalNotification and verify the contents."/>
-				<accept value="xml"/>
 				<destination value="1"/>
 				<encodeRequestUrl value="true"/>
 				<origin value="1"/> 
@@ -92,25 +91,6 @@
 			 <sourceId value="bundle-create-STIN"/>
 			</operation>
 		</action> 
-	 
-		<action>
-			<assert>
-				<description value="Confirm that the client requested an Accept of the FHIR XML mime type 'application/fhir+xml'. Warning only to allow for review of all asserts."/>
-				<direction value="request"/>
-				<headerField value="Accept"/>
-				<operator value="contains"/>
-				<value value="application/fhir+xml"/>
-				<warningOnly value="false"/>
-			</assert>
-		</action>
-		<action>
-			<assert>
-				<description value="Confirm that the client requested a Content-Type of the FHIR XML format."/>
-				<direction value="request"/>
-				<contentType value="xml"/>
-				<warningOnly value="false"/>
-			</assert>
-		</action>
 		<action>
 			<assert>
 				<description value="Confirm that the client request payload contains a Bundle resource type."/>
@@ -162,7 +142,7 @@
 	</test>
 <test id="02-Use case AN-S1">
 		<name value="HospitalNotification-AN-S3"/>
-		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
+		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML or json format."/>
   
 		 <action>
 			<operation>
@@ -172,7 +152,6 @@
 				</type>
 				<resource value="Bundle"/>
 				<description value="post the hospitalNotification cancelation and verify the contents."/>
-				<accept value="xml"/>
 				<destination value="1"/>
 				<encodeRequestUrl value="true"/>
 				<origin value="1"/>
@@ -188,24 +167,7 @@
   </assert>
 </action>
  -->
-		<action>
-			<assert>
-				<description value="Confirm that the client requested an Accept of the FHIR XML mime type 'application/fhir+xml'. Warning only to allow for review of all asserts."/>
-				<direction value="request"/>
-				<headerField value="Accept"/>
-				<operator value="contains"/>
-				<value value="application/fhir+xml"/>
-				<warningOnly value="false"/>
-			</assert>
-		</action>
-		<action>
-			<assert>
-				<description value="Confirm that the client requested a Content-Type of the FHIR XML format."/>
-				<direction value="request"/>
-				<contentType value="xml"/>
-				<warningOnly value="false"/>
-			</assert>
-		</action>
+		
 		<action>
 			<assert>
 				<description value="Confirm that the client request payload contains a Bundle resource type."/>

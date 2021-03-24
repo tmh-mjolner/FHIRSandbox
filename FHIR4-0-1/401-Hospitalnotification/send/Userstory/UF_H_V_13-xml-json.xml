@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestScript xmlns="http://hl7.org/fhir">
-	<id value="hospitalNotification-admit-mistake-dismiss"/>
+	<id value="hospitalNotification-message-transfere-internal-impatinet"/>
 	<meta>
 		<profile value="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript"/>
 	</meta>
 	<text>
 		<status value="generated"/>
-		<div xmlns="http://www.w3.org/1999/xhtml"><p>Correction: Patient is admitted but the hospital department registered is incorrect </p></div>
+		<div xmlns="http://www.w3.org/1999/xhtml"><p>Patient is admitted at hospital, transferred to another hospital (same region), and finally discharged to home- XML</p></div>
 	</text>
 
 	<url value="http://medcom.dk"/>
-	<name value="hospitalNotification-message-admit-inpatient-xml"/>
-	<title value="hospitalNotification-message admit-inpatient create XML"/>
+	<name value="hospitalNotification-message-admit-transferred-internal-xml-json"/>
+	<title value="hospitalNotification-message admit-emergency create XML"/>
 	<status value="active"/>
-	<date value="2021-01-20"/>
+	<date value="2021-03-16"/>
 	<publisher value="MedCom"/>
 	<contact>
 		<name value="Medcom"/>
@@ -23,8 +23,8 @@
 			<use value="work"/>
 		</telecom>
 	</contact>
-	<description value="Correction: Patient is admitted but the hospital department registered is incorrect"/>
-	<copyright value="MedCom 2025"/>
+	<description value="Patient is admitted at hospital, transferred to another hospital (same region), and finally discharged to home"/>
+	<copyright value="MedCom 2021"/>
 
 	<origin>
 		<index value="1"/>
@@ -40,18 +40,18 @@
 			<code value="FHIR-Server"/>
 		</profile>
 	</destination>
- <fixture id="bundle-create-STIN"> 
+ <fixture id="bundle-create"> 
         <autocreate value="false"/>  
         <autodelete value="false"/>  
         <resource> 
-           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-STIN-UF_H_V_6.xml"/>  
+           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-STIN-UF_H_V_1.xml"/>  
         </resource> 
     </fixture> 
-     <fixture id="bundle-createAN-STIN"> 
+     <fixture id="bundle-createSLHJ"> 
         <autocreate value="false"/>  
         <autodelete value="false"/>  
         <resource> 
-           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-RE_STIN-UF_H_V_6.xml"/>  
+           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-SLHJ-UF_H_V_1.xml"/>  
         </resource> 
     </fixture> 
 	<profile id="hospitalnotification-profile">
@@ -84,33 +84,13 @@
 				</type>
 				<resource value="Bundle"/>
 				<description value="post the hospitalNotification and verify the contents."/>
-				<accept value="xml"/>
 				<destination value="1"/>
 				<encodeRequestUrl value="true"/>
 				<origin value="1"/> 
 			  <responseId value="encounter-create-identifier"/> 
-			 <sourceId value="bundle-create-STIN"/>
+			 <sourceId value="bundle-create"/>
 			</operation>
 		</action> 
-	 
-		<action>
-			<assert>
-				<description value="Confirm that the client requested an Accept of the FHIR XML mime type 'application/fhir+xml'. Warning only to allow for review of all asserts."/>
-				<direction value="request"/>
-				<headerField value="Accept"/>
-				<operator value="contains"/>
-				<value value="application/fhir+xml"/>
-				<warningOnly value="false"/>
-			</assert>
-		</action>
-		<action>
-			<assert>
-				<description value="Confirm that the client requested a Content-Type of the FHIR XML format."/>
-				<direction value="request"/>
-				<contentType value="xml"/>
-				<warningOnly value="false"/>
-			</assert>
-		</action>
 		<action>
 			<assert>
 				<description value="Confirm that the client request payload contains a Bundle resource type."/>
@@ -160,9 +140,9 @@
 		</action>
 		
 	</test>
-<test id="02-Use case RE-S1">
-		<name value="HospitalNotification-AN-S3"/>
-		<description value="Post a Hospital notification correction (RE). The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
+<test id="02-Use case S3">
+		<name value="HospitalNotification-S3"/>
+		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
   
 		 <action>
 			<operation>
@@ -171,12 +151,11 @@
 					<code value="create"/>
 				</type>
 				<resource value="Bundle"/>
-				<description value="post the hospitalNotification cancelation and verify the contents."/>
-				<accept value="xml"/>
+				<description value="post the hospitalNotification and verify the contents."/>
 				<destination value="1"/>
 				<encodeRequestUrl value="true"/>
 				<origin value="1"/>
-				<sourceId value="bundle-create-STIN"/>
+				<sourceId value="bundle-create"/>
 			</operation>
 		</action> 
 	 <!-- 	<action>
@@ -188,24 +167,8 @@
   </assert>
 </action>
  -->
-		<action>
-			<assert>
-				<description value="Confirm that the client requested an Accept of the FHIR XML mime type 'application/fhir+xml'. Warning only to allow for review of all asserts."/>
-				<direction value="request"/>
-				<headerField value="Accept"/>
-				<operator value="contains"/>
-				<value value="application/fhir+xml"/>
-				<warningOnly value="false"/>
-			</assert>
-		</action>
-		<action>
-			<assert>
-				<description value="Confirm that the client requested a Content-Type of the FHIR XML format."/>
-				<direction value="request"/>
-				<contentType value="xml"/>
-				<warningOnly value="false"/>
-			</assert>
-		</action>
+		
+		
 		<action>
 			<assert>
 				<description value="Confirm that the client request payload contains a Bundle resource type."/>
@@ -227,7 +190,7 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected activity code."/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='revise-admit-inpatient').exists()"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='discharge-inpatient-home').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -245,9 +208,7 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected status"/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Encounter).status"/>
-				<operator value="equals"/>
-				<value value="in-progress"/>
+				<expression value="Bundle.entry.resource.ofType(Encounter).status.where('finished').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
