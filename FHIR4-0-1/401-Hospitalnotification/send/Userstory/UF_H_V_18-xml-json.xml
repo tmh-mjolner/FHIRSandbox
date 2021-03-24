@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestScript xmlns="http://hl7.org/fhir">
+	<id value="hospitalNotification-message-stay-acute-ambulant"/>
+	<meta>
+		<profile value="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript"/>
+	</meta>
+	<text>
+		<status value="generated"/>
+		<div xmlns="http://www.w3.org/1999/xhtml"><p>Patient dies upon arrival at the hospital- XML and JSON</p></div>
+	</text>
+
+	<url value="http://medcom.dk"/>
+	<name value="hospitalNotification-message-admit-emergency-xml-json"/>
+	<title value="hospitalNotification-message admit-emergency create XML og JSON"/>
+	<status value="active"/>
+	<date value="2021-03-22"/>
+	<publisher value="MedCom"/>
+	<contact>
+		<name value="Medcom"/>
+		<telecom>
+			<system value="email"/>
+			<value value="medcom@medcom.dk"/>
+			<use value="work"/>
+		</telecom>
+	</contact>
+	<description value="Patient dies upon arrival at the hospital"/>
+	<copyright value="MedCom 2021"/>
+
+	<origin>
+		<index value="1"/>
+		<profile>
+			<system value="http://terminology.hl7.org/CodeSystem/testscript-profile-origin-types"/>
+			<code value="FHIR-Client"/>
+		</profile>
+	</origin>
+	<destination>
+		<index value="1"/>
+		<profile>
+			<system value="http://terminology.hl7.org/CodeSystem/testscript-profile-destination-types"/>
+			<code value="FHIR-Server"/>
+		</profile>
+	</destination>
+ <fixture id="bundle-create"> 
+        <autocreate value="false"/>  
+        <autodelete value="false"/>  
+        <resource> 
+           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-MORS-UF_H_V_18.xml"/>  
+        </resource> 
+    </fixture> 
+	<profile id="hospitalnotification-profile">
+		<reference value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-message"/>
+	</profile>
+	<test id="01-Use case S9.1 Deseased">
+		<name value="HospitalNotification-S91"/>
+		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML or json format."/>
+  
+		 <action>
+			<operation>
+				<type>
+					<system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>
+					<code value="create"/>
+				</type>
+				<resource value="Bundle"/>
+				<description value="post the hospitalNotification and verify the contents."/>
+				<destination value="1"/>
+				<encodeRequestUrl value="true"/>
+				<origin value="1"/> 
+			  <responseId value="encounter-create-identifier"/> 
+			 <sourceId value="bundle-create"/>
+			</operation>
+		</action> 
+		<action>
+			<assert>
+				<description value="Confirm that the client request payload contains a Bundle resource type."/>
+				<direction value="request"/>
+				<resource value="Bundle"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the request resource contains the expected evetCoding code."/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(MessageHeader).event.as(Coding).select(code = 'hospital-notification-message').allTrue()"/>
+				<operator value="equals"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the request resource contains the expected activity code."/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.coding.code"/>
+				<operator value="equals"/>
+				<value value="admit-emergency"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the request resource contains the expected Encounter class code."/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(Encounter).class.code"/>
+				<operator value="equals"/>
+				<value value="EMER"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the request resource contains the expected status"/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(Encounter).status"/>
+				<operator value="equals"/>
+				<value value="finished"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that Confirm that the decease is true."/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(Patient).deceased"/>
+				<operator value="equals"/>
+				<value value="true"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+	</test>
+
+</TestScript>

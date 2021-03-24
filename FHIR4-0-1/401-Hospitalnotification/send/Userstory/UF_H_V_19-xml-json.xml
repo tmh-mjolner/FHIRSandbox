@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestScript xmlns="http://hl7.org/fhir">
-	<id value="hospitalNotification-message-admit-emergency"/>
+	<id value="hospitalNotification-message-stay-acute-ambulant"/>
 	<meta>
 		<profile value="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript"/>
 	</meta>
 	<text>
 		<status value="generated"/>
-		<div xmlns="http://www.w3.org/1999/xhtml"><p>medcom-hospitalNotification-message testing of status "admit-inpatient"- XML</p></div>
+		<div xmlns="http://www.w3.org/1999/xhtml"><p>medcom-hospitalNotification-message testing of status admit and dies- XML and JSON</p></div>
 	</text>
 
 	<url value="http://medcom.dk"/>
-	<name value="hospitalNotification-message-admit-inpatient-xml"/>
-	<title value="hospitalNotification-message admit-inpatient create XML"/>
+	<name value="hospitalNotification-message-admit-emergency-xml-json"/>
+	<title value="hospitalNotification-message admit-emergency create XML og JSON"/>
 	<status value="active"/>
-	<date value="2021-01-05"/>
+	<date value="2021-03-22"/>
 	<publisher value="MedCom"/>
 	<contact>
 		<name value="Medcom"/>
@@ -23,7 +23,7 @@
 			<use value="work"/>
 		</telecom>
 	</contact>
-	<description value="Patient is admitted at hospital and a week after discharged to home (inpatient)"/>
+	<description value="Patient is admitted and dies at the hospital"/>
 	<copyright value="MedCom 2021"/>
 
 	<origin>
@@ -44,14 +44,14 @@
         <autocreate value="false"/>  
         <autodelete value="false"/>  
         <resource> 
-           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-STIN-UF_H_V_1.xml"/>  
+           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-STIN-UF_H_V_19.xml"/>  
         </resource> 
     </fixture> 
-     <fixture id="bundle-createSLHJ"> 
+     <fixture id="bundle-createSTIN"> 
         <autocreate value="false"/>  
         <autodelete value="false"/>  
         <resource> 
-           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-SLHJ-UF_H_V_1.xml"/>  
+           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-MORS-UF_H_V_19.xml"/>  
         </resource> 
     </fixture> 
 	<profile id="hospitalnotification-profile">
@@ -72,9 +72,9 @@
         <expression value="Bundle.entry.resource.ofType(Encounter).episodeOfCare.identifier.value"/>
         <sourceId value="encounter-create-identifier"/> 
     </variable>  
-	<test id="01-Use case S1 Admit patient">
+	<test id="01-Use case S1 Start hospital stay-admission STIn">
 		<name value="HospitalNotification-S1"/>
-		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
+		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML or JSON format."/>
   
 		 <action>
 			<operation>
@@ -91,9 +91,6 @@
 			 <sourceId value="bundle-create"/>
 			</operation>
 		</action> 
-	 
-		
-		
 		<action>
 			<assert>
 				<description value="Confirm that the client request payload contains a Bundle resource type."/>
@@ -104,7 +101,7 @@
 		</action>
 		<action>
 			<assert>
-				<description value="Confirm that the request resource contains the expected evetCoding code."/>
+				<description value="Confirm that the request resource contains the expected evetCoding code"/>
 				<direction value="request"/>
 				<expression value="Bundle.entry.resource.ofType(MessageHeader).event.as(Coding).select(code = 'hospital-notification-message').allTrue()"/>
 				<operator value="equals"/>
@@ -143,9 +140,9 @@
 		</action>
 		
 	</test>
-<test id="02-Use case S3">
-		<name value="HospitalNotification-S3"/>
-		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
+<test id="02-Use case S9.2 - The patient dies at the hospital">
+		<name value="HospitalNotification-S93"/>
+		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML or JSON format."/>
   
 		 <action>
 			<operation>
@@ -170,22 +167,7 @@
   </assert>
 </action>
  -->
-		<action>
-			<assert>
-				<description value="Confirm that the client requested an Accept of the FHIR XML mime type 'application/fhir+xml'. Warning only to allow for review of all asserts."/>
-				<direction value="request"/>
-				<headerField value="Accept"/>
-				<operator value="contains"/>
-				<warningOnly value="false"/>
-			</assert>
-		</action>
-		<action>
-			<assert>
-				<description value="Confirm that the client requested a Content-Type of the FHIR XML format."/>
-				<direction value="request"/>
-				<warningOnly value="false"/>
-			</assert>
-		</action>
+		
 		<action>
 			<assert>
 				<description value="Confirm that the client request payload contains a Bundle resource type."/>
@@ -207,7 +189,7 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected activity code."/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='discharge-inpatient-home').exists()"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='admit-inpatient').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -225,13 +207,13 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected status"/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Encounter).status.where('finished').exists()"/>
+				<expression value="Bundle.entry.resource.ofType(Encounter).where(status = 'finished').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
 		<action>
 			<assert>
-				<description value="Confirm that the Encounter.identifier is equal to S1 test "/>
+				<description value="Confirm that the Encounter.identifier is equal to S1 test"/>
 				<direction value="request"/>
 				<expression value="Bundle.entry.resource.ofType(Encounter).identifier.value"/>
 				<operator value="equals"/>
@@ -249,11 +231,21 @@
 		</action>
 		<action>
 			<assert>
-				<description value="Confirm that the EpisodeOfCareIdentifier is equal to S1 "/>
+				<description value="Confirm that the EpisodeOfCareIdentifier is equal to S1"/>
 				<direction value="request"/>
 				<expression value="Bundle.entry.resource.ofType(Encounter).episodeOfCare.identifier.value"/>
 				<operator value="equals"/>
 				<value value="${firstEpisodeOfCareIdentifier}"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the decease is true."/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(Patient).deceased"/>
+				<operator value="equals"/>
+				<value value="true"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
