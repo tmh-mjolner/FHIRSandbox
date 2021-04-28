@@ -138,7 +138,16 @@
 				<warningOnly value="false"/>
 			</assert>
 		</action>
-		
+		<action>
+			<assert>
+				<description value="Confirm that the reportOfAdmissionRecipientExtension is set to true"/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(MessageHeader).extension.where(url='http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-reportOfAdmissionExtension').value"/>
+				<operator value="equals"/>
+				<value value="true"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
 	</test>
 <test id="02-Use case S9.2 - The patient dies at the hospital">
 		<name value="HospitalNotification-S93"/>
@@ -246,6 +255,16 @@
 				<expression value="Bundle.entry.resource.ofType(Patient).deceased"/>
 				<operator value="equals"/>
 				<value value="true"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the reportOfAdmissionRecipientExtension is set to false"/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(MessageHeader).extension.where(url='http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-reportOfAdmissionExtension').value"/>
+				<operator value="equals"/>
+				<value value="false"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>

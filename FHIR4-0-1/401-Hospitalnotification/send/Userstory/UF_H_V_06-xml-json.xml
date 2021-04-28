@@ -6,12 +6,12 @@
 	</meta>
 	<text>
 		<status value="generated"/>
-		<div xmlns="http://www.w3.org/1999/xhtml"><p>Error: Patient is admitted at hospital and by mistake a dismiss notitication is sent- XML and json</p></div>
+		<div xmlns="http://www.w3.org/1999/xhtml"><p>Correction: Patient is admitted but the hospital department registered is incorrect </p></div>
 	</text>
 
 	<url value="http://medcom.dk"/>
 	<name value="hospitalNotification-message-admit-inpatient-xml-json"/>
-	<title value="hospitalNotification-message admit-inpatient create XML and json"/>
+	<title value="hospitalNotification-message admit-inpatient create XML-json"/>
 	<status value="active"/>
 	<date value="2021-01-20"/>
 	<publisher value="MedCom"/>
@@ -23,8 +23,8 @@
 			<use value="work"/>
 		</telecom>
 	</contact>
-	<description value="Cancellation: Wrong patient has been admitted"/>
-	<copyright value="MedCom 2021"/>
+	<description value="Correction: Patient is admitted but the hospital department registered is incorrect"/>
+	<copyright value="MedCom 2025"/>
 
 	<origin>
 		<index value="1"/>
@@ -44,14 +44,14 @@
         <autocreate value="false"/>  
         <autodelete value="false"/>  
         <resource> 
-           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-STIN-S1-UF_H_V_5.xml"/>  
+           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-STIN-UF_H_V_6.xml"/>  
         </resource> 
     </fixture> 
      <fixture id="bundle-createAN-STIN"> 
         <autocreate value="false"/>  
         <autodelete value="false"/>  
         <resource> 
-           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-AN-STIN-AN-S1-UF_H_V_5.xml"/>  
+           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-RE_STIN-UF_H_V_6.xml"/>  
         </resource> 
     </fixture> 
 	<profile id="hospitalnotification-profile">
@@ -91,6 +91,8 @@
 			 <sourceId value="bundle-create-STIN"/>
 			</operation>
 		</action> 
+	 
+		
 		<action>
 			<assert>
 				<description value="Confirm that the client request payload contains a Bundle resource type."/>
@@ -138,11 +140,20 @@
 				<warningOnly value="false"/>
 			</assert>
 		</action>
-		
+		<action>
+			<assert>
+				<description value="Confirm that the reportOfAdmissionRecipientExtension is set to true"/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(MessageHeader).extension.where(url='http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-reportOfAdmissionExtension').value"/>
+				<operator value="equals"/>
+				<value value="true"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
 	</test>
-<test id="02-Use case AN-S1">
+<test id="02-Use case RE-S1">
 		<name value="HospitalNotification-AN-S3"/>
-		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML or json format."/>
+		<description value="Post a Hospital notification correction (RE). The expected response is a 200(OK) with a payload of the Hospital notification resource in XML or json format."/>
   
 		 <action>
 			<operation>
@@ -189,7 +200,7 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected activity code."/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='cancel-admit-inpatient').exists()"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='revise-admit-inpatient').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -209,7 +220,7 @@
 				<direction value="request"/>
 				<expression value="Bundle.entry.resource.ofType(Encounter).status"/>
 				<operator value="equals"/>
-				<value value="entered-in-error"/>
+				<value value="in-progress"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -241,6 +252,17 @@
 				<warningOnly value="false"/>
 			</assert>
 		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the reportOfAdmissionRecipientExtension is set to false"/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(MessageHeader).extension.where(url='http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-reportOfAdmissionExtension').value"/>
+				<operator value="equals"/>
+				<value value="false"/>
+				<warningOnly value="false"/>
+			</assert>
+</action>
+		
 	</test>
 
 </TestScript>

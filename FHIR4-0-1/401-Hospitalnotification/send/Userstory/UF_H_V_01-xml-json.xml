@@ -75,7 +75,6 @@
 	<test id="01-Use case S1 Admit patient">
 		<name value="HospitalNotification-S1"/>
 		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
-  
 		 <action>
 			<operation>
 				<type>
@@ -91,9 +90,6 @@
 			 <sourceId value="bundle-create"/>
 			</operation>
 		</action> 
-	 
-		
-		
 		<action>
 			<assert>
 				<description value="Confirm that the client request payload contains a Bundle resource type."/>
@@ -141,7 +137,16 @@
 				<warningOnly value="false"/>
 			</assert>
 		</action>
-		
+		<action>
+			<assert>
+				<description value="Confirm that the reportOfAdmissionRecipientExtension is set to true"/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(MessageHeader).extension.where(url='http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-reportOfAdmissionExtension').value"/>
+				<operator value="equals"/>
+				<value value="true"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
 	</test>
 <test id="02-Use case S3">
 		<name value="HospitalNotification-S3"/>
@@ -170,22 +175,6 @@
   </assert>
 </action>
  -->
-		<action>
-			<assert>
-				<description value="Confirm that the client requested an Accept of the FHIR XML mime type 'application/fhir+xml'. Warning only to allow for review of all asserts."/>
-				<direction value="request"/>
-				<headerField value="Accept"/>
-				<operator value="contains"/>
-				<warningOnly value="false"/>
-			</assert>
-		</action>
-		<action>
-			<assert>
-				<description value="Confirm that the client requested a Content-Type of the FHIR XML format."/>
-				<direction value="request"/>
-				<warningOnly value="false"/>
-			</assert>
-		</action>
 		<action>
 			<assert>
 				<description value="Confirm that the client request payload contains a Bundle resource type."/>
@@ -257,6 +246,17 @@
 				<warningOnly value="false"/>
 			</assert>
 		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the reportOfAdmissionRecipientExtension is set to false"/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(MessageHeader).extension.where(url='http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-reportOfAdmissionExtension').value"/>
+				<operator value="equals"/>
+				<value value="false"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		
 	</test>
 
 </TestScript>

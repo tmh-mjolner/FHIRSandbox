@@ -23,7 +23,7 @@
 			<use value="work"/>
 		</telecom>
 	</contact>
-	<description value="Patient is in an emergency outpatient setting at hospital, but ends up being admitted"/>
+	<description value="Patient is admitted at hospital and a day after discharged (emergency)"/>
 	<copyright value="MedCom 2021"/>
 
 	<origin>
@@ -47,11 +47,11 @@
            <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-STAA-UF_H_V_7.xml"/>  
         </resource> 
     </fixture> 
-     <fixture id="bundle-createSTIN"> 
+     <fixture id="bundle-createSLHJ"> 
         <autocreate value="false"/>  
         <autodelete value="false"/>  
         <resource> 
-           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-STIN-UF_H_V_17.xml"/>  
+           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-SLHJ-UF_H_V_7.xml"/>  
         </resource> 
     </fixture> 
 	<profile id="hospitalnotification-profile">
@@ -149,7 +149,7 @@
 			</assert>
 		</action>
 	</test>
-<test id="02-Use case S10 - Admit patient who is registered as acute ambulant">
+<test id="02-Use case S3">
 		<name value="HospitalNotification-S3"/>
 		<description value="Post a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format."/>
   
@@ -198,15 +198,7 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected activity code."/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='admit-inpatient').exists()"/>
-				<warningOnly value="false"/>
-			</assert>
-		</action>
-		<action>
-			<assert>
-				<description value="Confirm that the request resource contains the expected activity code."/>
-				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='admit-emergency').exists()"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).activity.where(coding.code ='discharge-emergency-home').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -216,7 +208,7 @@
 				<direction value="request"/>
 				<expression value="Bundle.entry.resource.ofType(Encounter).class.code"/>
 				<operator value="equals"/>
-				<value value="IMP"/>
+				<value value="EMER"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -224,7 +216,7 @@
 			<assert>
 				<description value="Confirm that the request resource contains the expected status"/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Encounter).where(status = 'in-progress').exists()"/>
+				<expression value="Bundle.entry.resource.ofType(Encounter).status.where('finished').exists()"/>
 				<warningOnly value="false"/>
 			</assert>
 		</action>
@@ -256,7 +248,7 @@
 				<warningOnly value="false"/>
 			</assert>
 		</action>
-			<action>
+		<action>
 			<assert>
 				<description value="Confirm that the reportOfAdmissionRecipientExtension is set to false"/>
 				<direction value="request"/>

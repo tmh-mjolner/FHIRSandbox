@@ -168,6 +168,16 @@
 				<warningOnly value="false"/>
 			</assert>
 		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the reportOfAdmissionRecipientExtension is set to true"/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(MessageHeader).extension.where(url='http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-reportOfAdmissionExtension').value"/>
+				<operator value="equals"/>
+				<value value="true"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
 	</test>
 	<test id="02-Use case S8.1b -Transfer a patient to another hospital in another region (in-itial hospital, the patient is responsible for transportation)">
 		<name value="HospitalNotification-S4"/>
@@ -290,7 +300,16 @@
 				<warningOnly value="false"/>
 			</assert>
 		</action>
-		
+		<action>
+			<assert>
+				<description value="Confirm that the reportOfAdmissionRecipientExtension is set to false"/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(MessageHeader).extension.where(url='http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-reportOfAdmissionExtension').value"/>
+				<operator value="equals"/>
+				<value value="false"/>
+				<warningOnly value="false"/>
+			</assert>
+</action>
 	</test>
 
 	<test id="03-Use case S7.2 -end stay">
@@ -424,6 +443,16 @@
 				<warningOnly value="false"/>
 			</assert>
 		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the reportOfAdmissionRecipientExtension is set to false"/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(MessageHeader).extension.where(url='http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-reportOfAdmissionExtension').value"/>
+				<operator value="equals"/>
+				<value value="false"/>
+				<warningOnly value="false"/>
+			</assert>
+</action>
 	</test>
 	<test id="04-Use case S3 -end hospitalstay">
 		<name value="HospitalNotification-S32"/>
@@ -547,5 +576,15 @@
 				<warningOnly value="false"/>
 			</assert>
 		</action>
+		<action>
+			<assert>
+				<description value="Confirm that the reportOfAdmissionRecipientExtension is set to false"/>
+				<direction value="request"/>
+				<expression value="Bundle.entry.resource.ofType(MessageHeader).extension.where(url='http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-reportOfAdmissionExtension').value"/>
+				<operator value="equals"/>
+				<value value="false"/>
+				<warningOnly value="false"/>
+			</assert>
+</action>
 	</test>
 </TestScript>
