@@ -1,0 +1,140 @@
+<TestScript xmlns="http://hl7.org/fhir">  
+    <id value="US Core - System Requirements Tests"/>  
+    <meta> 
+        <profile value="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript"/> 
+    </meta>  
+    <extension url="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript-rule"> 
+        <extension url="ruleId"> 
+            <valueId value="MustSupportEval"/> 
+        </extension>  
+        <extension url="path"> 
+            <valueString value="/FHIRCommon/_reference/rule/MustSupportEval.groovy"/> 
+        </extension> 
+    </extension>  
+     
+    <extension url="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript-rule"> 
+        <extension url="ruleId"> 
+            <valueId value="MustSupportReport"/> 
+        </extension>  
+        <extension url="path"> 
+            <valueString value="/FHIRCommon/_reference/rule/MustSupportReport.groovy"/> 
+        </extension> 
+    </extension>  
+    <url value="http://wildfhir.aegis.net/fhir4-0-1/TestScript/US_Core_System_Requirements"/>  
+    <name value="US_Core_System_Requirements"/>  
+    <title value="US Core - System Requirements Tests"/>  
+    <status value="active"/>  
+    <date value="2021-01-21"/>  
+    <publisher value="AEGIS.net, Inc."/>  
+    <contact> 
+        <name value="Touchstone Support"/>  
+        <telecom> 
+            <system value="email"/>  
+            <value value="Touchstone_Support@aegis.net"/>  
+            <use value="work"/> 
+        </telecom> 
+    </contact>  
+    <description value="Query all applicable US Core resources to confirm MustSupport and DataAbsentReason requirements for US Core."/>  
+    <copyright value="(c) AEGIS.net, Inc. 2020"/> 
+    <origin>
+		<index value="1"/>
+		<profile>
+			<system value="http://terminology.hl7.org/CodeSystem/testscript-profile-origin-types"/>
+			<code value="FHIR-Client"/>
+		</profile>
+	</origin> 
+    <destination> 
+        <index value="1"/>  
+        <profile> 
+            <system value="http://terminology.hl7.org/CodeSystem/testscript-profile-destination-types"/>  
+            <code value="FHIR-Server"/> 
+        </profile> 
+    </destination>  
+     <fixture id="Ack-ok"> 
+        <autocreate value="false"/>  
+        <autodelete value="false"/>  
+        <resource> 
+           <reference value="/FHIRSandbox/MedCom/401-Acknowledgement/_reference/resources/Patientus.xml"/>  
+        </resource> 
+    </fixture>  
+    <test id="01-All-Searches"> 
+        <name value="all-searches"/>  
+        <description value="Query all applicable US Core resources to confirm MustSupport and DataAbsentReason requirements for US Core."/>  
+       
+        <action>
+			<operation>
+				<type>
+					<system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>
+					<code value="create"/>
+				</type>
+				<resource value="Patient"/>
+				<description value="post the Acknowledgement and verify the contents."/>
+				<destination value="1"/>
+				<encodeRequestUrl value="true"/>
+				<origin value="1"/> 
+			 <sourceId value="Ack-ok"/>
+			</operation>
+		</action> 
+       
+   
+        <action> 
+            <assert> 
+                <extension url="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript-assert-stopTestOnFail"> 
+                    <valueBoolean value="false"/> 
+                </extension>  
+                <extension url="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript-assert-rule"> 
+                    <extension url="ruleId"> 
+                        <valueId value="MustSupportEval"/> 
+                    </extension>  
+                    <extension url="param"> 
+                        <extension url="name"> 
+                            <valueString value="mustSupports"/> 
+                        </extension>  
+                        <extension url="value"> 
+                            <valueString value="Patient.extension.where(url='http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'),Patient.extension.where(url='http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'),Patient.extension.where(url='http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'),Patient.identifier,Patient.identifier.system,Patient.identifier.value,Patient.name,Patient.name.family,Patient.name.given,Patient.telecom,Patient.telecom.system,Patient.telecom.value,Patient.telecom.use,Patient.gender,Patient.birthDate,Patient.address,Patient.address.line,Patient.address.city,Patient.address.state,Patient.address.postalCode,Patient.address.period"/> 
+                        </extension> 
+                    </extension>  
+                    <extension url="param"> 
+                        <extension url="name"> 
+                            <valueString value="outputPrefix"/> 
+                        </extension>  
+                        <extension url="value"> 
+                            <valueString value="Patient"/> 
+                        </extension> 
+                    </extension>  
+                    <extension url="output"> 
+                        <extension url="name"> 
+                            <valueString value="Patient-msArray"/> 
+                        </extension> 
+                    </extension> 
+                </extension>  
+                <description value="Rule call to dynamically evaluate MustSupport and Data Absent Reason requirements. "/>  
+                <warningOnly value="false"/> 
+            </assert> 
+        </action>  
+    </test>  
+  
+    <test id="16-Assert-MS-Patient"> 
+        <name value="Assert-MS-Patient"/>  
+        <description value="Rule assert to validate MustSupport requirements for US Core Patient."/>  
+        <action> 
+            <assert> 
+                <extension url="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript-assert-rule"> 
+                    <extension url="ruleId"> 
+                        <valueId value="MustSupportReport"/> 
+                    </extension>  
+                    <extension url="param"> 
+                        <extension url="name"> 
+                            <valueString value="mustSupported"/> 
+                        </extension>  
+                        <extension url="value"> 
+                            <valueString value="${Patient-msArray}"/> 
+                        </extension> 
+                    </extension> 
+                </extension>  
+                <warningOnly value="false"/> 
+            </assert> 
+        </action> 
+    </test>  
+
+</TestScript>

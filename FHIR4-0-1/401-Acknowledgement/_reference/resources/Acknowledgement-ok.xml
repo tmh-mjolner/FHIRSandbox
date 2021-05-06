@@ -1,0 +1,125 @@
+<Bundle xmlns="http://hl7.org/fhir">
+  <meta>
+    <profile
+             value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-acknowledgement"/>
+  </meta>
+  <type value="message"/>
+  <timestamp value="2021-01-01T12:34:56Z"/>
+  <entry>
+    <fullUrl value="MessageHeader/4aa2d9bf-2c6c-47e8-bce4-7928bcd51019"/>
+    <resource>
+      <MessageHeader>
+        <id value="4aa2d9bf-2c6c-47e8-bce4-7928bcd51019"/>
+        <meta>
+          <profile
+                   value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-acknowledgementHeader"/>
+        </meta>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>event</b>: <span title="{http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-eventCodes empty-message}">Message with no content</span></p><h3>Destinations</h3><table class="grid"><tr><td>-</td><td><b>Extension</b></td><td><b>Endpoint</b></td><td><b>Receiver</b></td></tr><tr><td>*</td><td></td><td><a href="http://medcomfhir.dk/unknown">http://medcomfhir.dk/unknown</a></td><td><a href="#Organization_74cdf292-abf3-4f5f-80ea-60a48013ff6d">See above (Organization/74cdf292-abf3-4f5f-80ea-60a48013ff6d)</a></td></tr></table><p><b>sender</b>: <a href="#Organization_d7056980-a8b2-42aa-8a0e-c1fc85d1f40d">See above (Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d)</a></p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Endpoint</b></td></tr><tr><td>*</td><td><a href="http://medcomfhir.dk/unknown">http://medcomfhir.dk/unknown</a></td></tr></table><h3>Responses</h3><table class="grid"><tr><td>-</td><td><b>Identifier</b></td><td><b>Code</b></td><td><b>Details</b></td></tr><tr><td>*</td><td>382fb8a3-6725-41e2-a615-2b1cfcfe9931</td><td>fatal-error</td><td><a href="OperationOutcome-4ecb2a8e-3a68-4083-910e-811296affd43.html">Generated Summary: </a></td></tr></table></div>
+        </text>
+        <eventCoding>
+          <system
+                  value="http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-eventCodes"/>
+          <code value="empty-message"/>
+        </eventCoding>
+        <destination>
+          <extension
+                     url="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-destinationUseExtension">
+            <valueCoding>
+              <system
+                      value="http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-destinationUse"/>
+              <code value="primary"/>
+            </valueCoding>
+          </extension>
+          <endpoint value="http://medcomfhir.dk/unknown"/>
+          <receiver>
+            <reference value="Organization/74cdf292-abf3-4f5f-80ea-60a48013ff6d"/>
+          </receiver>
+        </destination>
+        <sender>
+          <reference value="Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d"/>
+        </sender>
+        <source>
+          <endpoint value="http://medcomfhir.dk/unknown"/>
+        </source>
+        <response>
+          <identifier value="382fb8a3-6725-41e2-a615-2b1cfcfe9931"/>
+          <code value="fatal-error"/>
+          <details>
+            <reference
+                       value="OperationOutcome/4ecb2a8e-3a68-4083-910e-811296affd43"/>
+          </details>
+        </response>
+      </MessageHeader>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d"/>
+    <resource>
+      <Organization>
+        <id value="d7056980-a8b2-42aa-8a0e-c1fc85d1f40d"/>
+        <meta>
+          <profile
+                   value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-organization"/>
+        </meta>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 123456789012345, id: 5790001382445</p><p><b>name</b>: Sender Organization</p></div>
+        </text>
+        <identifier>
+          <system value="urn:oid:1.2.208.176.1.1"/>
+          <value value="123456789012345"/>
+        </identifier>
+        <identifier>
+          <system value="urn:oid:1.3.88"/>
+          <value value="5790001382445"/>
+        </identifier>
+        <name value="Sender Organization"/>
+      </Organization>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="Organization/74cdf292-abf3-4f5f-80ea-60a48013ff6d"/>
+    <resource>
+      <Organization>
+        <id value="74cdf292-abf3-4f5f-80ea-60a48013ff6d"/>
+        <meta>
+          <profile
+                   value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-organization"/>
+        </meta>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 543210987654321, id: 5790000121526</p><p><b>name</b>: Receiver Organization</p></div>
+        </text>
+        <identifier>
+          <system value="urn:oid:1.2.208.176.1.1"/>
+          <value value="543210987654321"/>
+        </identifier>
+        <identifier>
+          <system value="urn:oid:1.3.88"/>
+          <value value="5790000121526"/>
+        </identifier>
+        <name value="Receiver Organization"/>
+      </Organization>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl
+             value="MedComMessagingAcknowledgementHeader/4ecb2a8e-3a68-4083-910e-811296affd43"/>
+    <resource>
+      <OperationOutcome>
+        <id value="e87bc9d4-f876-4b6f-8585-40b26dc1e369"/>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><h3>Issues</h3><table class="grid"><tr><td>-</td><td><b>Severity</b></td><td><b>Code</b></td><td><b>Diagnostics</b></td></tr><tr><td>*</td><td>information</td><td>structure</td><td>Invalid messages from your system 0%</td></tr></table></div>
+        </text>
+        <issue>
+          <severity value="information"/>
+          <code value="structure"/>
+          <diagnostics value="Invalid messages from your system 0%"/>
+        </issue>
+      </OperationOutcome>
+    </resource>
+  </entry>
+</Bundle>

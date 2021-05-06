@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestScript xmlns="http://hl7.org/fhir">
+	<id value="Acknowledgement-message-ok"/>
+	<meta>
+		<profile value="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript"/>
+	</meta>
+	<text>
+		<status value="generated"/>
+		<div xmlns="http://www.w3.org/1999/xhtml"><p>medcom-MedComMessagingAcknowledgement-message testing of status "ok"- XML and JSon</p></div>
+	</text>
+	<extension url="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript-rule">
+    <extension url="ruleId">
+        <valueId value="assertETag"/>
+    </extension>
+    <extension url="path">
+        <valueString value="/FHIRSandbox/MedCom/401-Acknowledgement/_reference/rule/AssertHeader.groovy"/>
+    </extension>
+	</extension>
+	<url value="http://medcom.dk"/>
+	<name value="MedComMessagingAcknowledgement-ok-xml-json"/>
+	<title value="MedComMessagingAcknowledgement ok responce"/>
+	<status value="active"/>
+	<date value="2021-05-03"/>
+	<publisher value="MedCom"/>
+	<contact>
+		<name value="Medcom"/>
+		<telecom>
+			<system value="email"/>
+			<value value="medcom@medcom.dk"/>
+			<use value="work"/>
+		</telecom>
+	</contact>
+	<description value="SUT receives a Hospitalnotification Message and responce with a valid Acknowledgement message"/>
+	<copyright value="MedCom 2021"/>
+
+	<origin>
+		<index value="1"/>
+		<profile>
+			<system value="http://terminology.hl7.org/CodeSystem/testscript-profile-origin-types"/>
+			<code value="FHIR-Client"/>
+		</profile>
+	</origin>
+	<destination>
+		<index value="1"/>
+		<profile>
+			<system value="http://terminology.hl7.org/CodeSystem/testscript-profile-destination-types"/>
+			<code value="FHIR-Server"/>
+		</profile>
+	</destination>
+     <fixture id="Ack-ok"> 
+        <autocreate value="false"/>  
+        <autodelete value="false"/>  
+        <resource> 
+           <reference value="/FHIRSandbox/MedCom/401-Acknowledgement/_reference/resources/Acknowledgement-ok.xml"/>  
+        </resource> 
+    </fixture> 
+	<profile id="messagingAcknowledgement-profile">
+		<reference value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-acknowledgement"/>
+	</profile>
+	<test id="01-Send OK Ack">
+		<name value="Acknowledgement-ok"/>
+		<description value="Post a Acknowledgement with ok"/>
+		 <action>
+			<operation>
+				<type>
+					<system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>
+					<code value="create"/>
+				</type>
+				<resource value="Bundle"/>
+				<description value="post the Acknowledgement and verify the contents."/>
+				<destination value="1"/>
+				<encodeRequestUrl value="true"/>
+				<origin value="1"/> 
+			 <sourceId value="Ack-ok"/>
+			</operation>
+		</action> 
+		<action>
+			<assert>
+				<description value="Confirm that the client request payload contains a Bundle resource type."/>
+				<direction value="request"/>
+				<resource value="Bundle"/>
+				<warningOnly value="false"/>
+			</assert>
+		</action>
+		<action>
+		<assert>
+    <extension url="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript-assert-rule">
+        <extension url="ruleId">
+            <valueId value="assertETag"/>
+        </extension>
+    </extension>
+    <warningOnly value="false" />
+</assert>
+</action>
+<!--
+	<action>
+ 
+  <assert>
+ <description value="Validate of hospital notification."/>
+  <direction value="request"/>
+    <validateProfileId value="messagingAcknowledgement-profile"></validateProfileId>
+    <warningOnly value="false"/>
+  </assert>
+</action>
+ -->
+  
+	</test>
+
+</TestScript>
