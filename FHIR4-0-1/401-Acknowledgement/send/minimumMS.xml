@@ -11,14 +11,7 @@
             <valueString value="/FHIRCommon/_reference/rule/MustSupportEval.groovy"/> 
         </extension> 
     </extension>  
-    <extension url="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript-rule"> 
-        <extension url="ruleId"> 
-            <valueId value="DAREval"/> 
-        </extension>  
-        <extension url="path"> 
-            <valueString value="/FHIRCommon/_reference/rule/DAREval.groovy"/> 
-        </extension> 
-    </extension>  
+     
     <extension url="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript-rule"> 
         <extension url="ruleId"> 
             <valueId value="MustSupportReport"/> 
@@ -57,30 +50,31 @@
             <code value="FHIR-Server"/> 
         </profile> 
     </destination>  
-    <variable> 
-        <name value="patientId"/>  
-        <description value="Patient id"/> 
-    </variable>  
+     <fixture id="Ack-ok"> 
+        <autocreate value="false"/>  
+        <autodelete value="false"/>  
+        <resource> 
+           <reference value="/FHIRSandbox/MedCom/401-Acknowledgement/_reference/resources/Patientus.xml"/>  
+        </resource> 
+    </fixture>  
     <test id="01-All-Searches"> 
         <name value="all-searches"/>  
         <description value="Query all applicable US Core resources to confirm MustSupport and DataAbsentReason requirements for US Core."/>  
        
-        <action> 
-            <operation> 
-                <type> 
-                    <system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>  
-                    <code value="search"/> 
-                </type>  
-                <resource value="Patient"/>  
-                <description value="Search by patient id"/>  
-                <accept value="json"/>  
-                <contentType value="json"/>  
-                <destination value="1"/>  
-                <encodeRequestUrl value="true"/>  
-                <params value="?_id=${patientId}&amp;_revinclude=Provenance:target"/>  
-                <responseId value="testOneSearch"/> 
-            </operation> 
-        </action>  
+        <action>
+			<operation>
+				<type>
+					<system value="http://terminology.hl7.org/CodeSystem/testscript-operation-codes"/>
+					<code value="create"/>
+				</type>
+				<resource value="Patient"/>
+				<description value="post the Acknowledgement and verify the contents."/>
+				<destination value="1"/>
+				<encodeRequestUrl value="true"/>
+				<origin value="1"/> 
+			 <sourceId value="Ack-ok"/>
+			</operation>
+		</action> 
        
    
         <action> 
@@ -97,7 +91,7 @@
                             <valueString value="mustSupports"/> 
                         </extension>  
                         <extension url="value"> 
-                            <valueString value="Bundle.entry.resource.extension.where(url='http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'),Bundle.entry.resource.extension.where(url='http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'),Bundle.entry.resource.extension.where(url='http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'),Bundle.entry.resource.identifier,Bundle.entry.resource.identifier.system,Bundle.entry.resource.identifier.value,Bundle.entry.resource.name,Bundle.entry.resource.name.family,Bundle.entry.resource.name.given,Bundle.entry.resource.telecom,Bundle.entry.resource.telecom.system,Bundle.entry.resource.telecom.value,Bundle.entry.resource.telecom.use,Bundle.entry.resource.gender,Bundle.entry.resource.birthDate,Bundle.entry.resource.address,Bundle.entry.resource.address.line,Bundle.entry.resource.address.city,Bundle.entry.resource.address.state,Bundle.entry.resource.address.postalCode,Bundle.entry.resource.address.period,Bundle.entry.resource.communication,Bundle.entry.resource.communication.language"/> 
+                            <valueString value="Patient.extension.where(url='http://hl7.org/fhir/us/core/StructureDefinition/us-core-race'),Patient.extension.where(url='http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity'),Patient.extension.where(url='http://hl7.org/fhir/us/core/StructureDefinition/us-core-birthsex'),Patient.identifier,Patient.identifier.system,Patient.identifier.value,Patient.name,Patient.name.family,Patient.name.given,Patient.telecom,Patient.telecom.system,Patient.telecom.value,Patient.telecom.use,Patient.gender,Patient.birthDate,Patient.address,Patient.address.line,Patient.address.city,Patient.address.state,Patient.address.postalCode,Patient.address.period"/> 
                         </extension> 
                     </extension>  
                     <extension url="param"> 
