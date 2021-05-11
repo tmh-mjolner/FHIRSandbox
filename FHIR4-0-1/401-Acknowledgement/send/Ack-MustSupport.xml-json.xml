@@ -1,5 +1,5 @@
 <TestScript xmlns="http://hl7.org/fhir">  
-    <id value="US Core - System Requirements Tests"/>  
+    <id value="MedComMessagingAcknowledgement -Mustsupport validation"/>  
     <meta> 
         <profile value="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript"/> 
     </meta>  
@@ -22,7 +22,7 @@
     </extension>  
     <url value="http://wildfhir.aegis.net/fhir4-0-1/TestScript/US_Core_System_Requirements"/>  
     <name value="US_Core_System_Requirements"/>  
-    <title value="US Core - System Requirements Tests"/>  
+    <title value="MedComMessagingAcknowledgement test for MustSupport"/>  
     <status value="active"/>  
     <date value="2021-01-21"/>  
     <publisher value="AEGIS.net, Inc."/>  
@@ -34,8 +34,8 @@
             <use value="work"/> 
         </telecom> 
     </contact>  
-    <description value="Query all applicable US Core resources to confirm MustSupport and DataAbsentReason requirements for US Core."/>  
-    <copyright value="(c) AEGIS.net, Inc. 2020"/> 
+    <description value="MedComMessagingAcknowledgement MustSupport test where Card is 0.."/>  
+    <copyright value="(c) MedCom 2021"/> 
     <origin>
 		<index value="1"/>
 		<profile>
@@ -57,9 +57,9 @@
            <reference value="/FHIRSandbox/MedCom/401-Acknowledgement/_reference/resources/Acknowledgement-ok.xml"/>  
         </resource> 
     </fixture>  
-    <test id="01-All-Searches"> 
+    <test id="01-MustSupport"> 
         <name value="all-searches"/>  
-        <description value="Query all applicable US Core resources to confirm MustSupport and DataAbsentReason requirements for US Core."/>  
+        <description value="MedComMessagingAcknowledgement MustSupport test where Card is 0.."/>  
        
         <action>
 			<operation>
@@ -110,7 +110,7 @@
                     </extension>  
                     <extension url="output"> 
                         <extension url="name"> 
-                            <valueString value="Patient-msArray"/> 
+                            <valueString value="Ack-msArray"/> 
                         </extension> 
                     </extension> 
                 </extension>  
@@ -120,9 +120,9 @@
         </action>  
     </test>  
   
-    <test id="16-Assert-MS-Patient"> 
+    <test id="16-Assert-MS-Acknowledgement"> 
         <name value="Assert-MS-Patient"/>  
-        <description value="Rule assert to validate MustSupport requirements for US Core Patient."/>  
+        <description value="Rule assert to validate MustSupport requirements for MedComMessagingAcknowledgement"/>  
         <action> 
             <assert> 
                 <extension url="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript-assert-rule"> 
@@ -134,7 +134,7 @@
                             <valueString value="mustSupported"/> 
                         </extension>  
                         <extension url="value"> 
-                            <valueString value="${Patient-msArray}"/> 
+                            <valueString value="${Ack-msArray}"/> 
                         </extension> 
                     </extension> 
                 </extension>  
