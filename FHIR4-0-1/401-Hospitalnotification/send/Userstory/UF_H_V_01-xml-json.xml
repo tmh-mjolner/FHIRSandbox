@@ -63,7 +63,7 @@
         <sourceId value="encounter-create-identifier"/> 
     </variable> 
     <variable> 
-        <name value="headerResourceRefference"/>  
+        <name value="headerResourceReference"/>  
         <expression value="Bundle.entry[0].fullUrl"/>
         <sourceId value="encounter-create-identifier"/> 
     </variable> 
@@ -232,7 +232,7 @@
 			<assert>
 				<description value="Confirm that the what refferece S1 MessageHeader "/>
 				<direction value="request"/>
-				<expression value="Bundle.entry.resource.ofType(Provenance).where(entity.what.reference ='${headerResourceRefference}')"/>
+				<expression value="Bundle.entry.resource.ofType(Provenance).where(entity.what.reference ='${headerResourceReference}')"/>
 				<warningOnly value="true"/>
 			</assert>
 		</action>
