@@ -1,5 +1,5 @@
 <TestScript xmlns="http://hl7.org/fhir">  
-    <id value="MedComMessagingAcknowledgement -Mustsupport validation"/>  
+    <id value="HospitalNotification -Mustsupport validation"/>  
     <meta> 
         <profile value="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript"/> 
     </meta>  
@@ -22,7 +22,7 @@
     </extension>  
     <url value="http://wildfhir.aegis.net/fhir4-0-1/TestScript/US_Core_System_Requirements"/>  
     <name value="US_Core_System_Requirements"/>  
-    <title value="MedComMessagingAcknowledgement test for MustSupport"/>  
+    <title value="HospitalNotification test for MustSupport"/>  
     <status value="active"/>  
     <date value="2021-01-21"/>  
     <publisher value="AEGIS.net, Inc."/>  
@@ -34,7 +34,7 @@
             <use value="work"/> 
         </telecom> 
     </contact>  
-    <description value="MedComMessagingAcknowledgement MustSupport test where Card is 0.."/>  
+    <description value="HospitalNotification MustSupport test where Card is 0.."/>  
     <copyright value="(c) MedCom 2021"/> 
     <origin>
 		<index value="1"/>
@@ -50,16 +50,16 @@
             <code value="FHIR-Server"/> 
         </profile> 
     </destination>  
-     <fixture id="Ack-ok"> 
+     <fixture id="HospitalNotification-ok"> 
         <autocreate value="false"/>  
         <autodelete value="false"/>  
         <resource> 
-           <reference value="/FHIRSandbox/MedCom/401-Acknowledgement/_reference/resources/Acknowledgement-ok.xml"/>  
+           <reference value="/FHIRSandbox/MedCom/401-Hospitalnotification/send/Userstory/_reference/resources/HospitalNotificationMessage-STIN.xml"/>  
         </resource> 
     </fixture>  
     <test id="01-MustSupport"> 
         <name value="all-searches"/>  
-        <description value="MedComMessagingAcknowledgement MustSupport test where Card is 0.."/>  
+        <description value="HospitalNotification MustSupport test where Card is 0.."/>  
        
         <action>
 			<operation>
@@ -68,11 +68,11 @@
 					<code value="create"/>
 				</type>
 				<resource value="Bundle"/>
-				<description value="post the Acknowledgement and verify the contents."/>
+				<description value="post the HospitalNotification and verify the contents."/>
 				<destination value="1"/>
 				<encodeRequestUrl value="true"/>
 				<origin value="1"/> 
-			 <sourceId value="Ack-ok"/>
+			 <sourceId value="HospitalNotification-ok"/>
 			</operation>
 		</action> 
        
@@ -93,11 +93,14 @@
                         <extension url="value"> 
                         
                             <valueString value="Bundle.type,
-                            Bundle.timestamp,
+                            Bundle.entry.resource.ofType(MessageHeader).extension.where(url='http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-reportOfAdmissionExtension'),
+                            Bundle.entry.resource.ofType(MessageHeader).extension.where(url='http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-reportOfAdmissionRecipientExtension')
+                            "/>
+                            <!-- Bundle.timestamp,
                             Bundle.entry.resource.ofType(MessageHeader).event.as(Coding).where(system = 'http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-eventCodes'),
                             Bundle.entry.resource.ofType(MessageHeader).destination.extension.where(url = 'http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-destinationUseExtension'),
                             Bundle.entry.resource.ofType(MessageHeader).destination.endpoint,
-                            Bundle.entry.resource.ofType(Organization).name"/> 
+                            Bundle.entry.resource.ofType(Organization).name"  -->
                         </extension> 
                     </extension>  
                     <extension url="param"> 
@@ -110,7 +113,7 @@
                     </extension>  
                     <extension url="output"> 
                         <extension url="name"> 
-                            <valueString value="Ack-msArray"/> 
+                            <valueString value="Patient-msArray"/> 
                         </extension> 
                     </extension> 
                 </extension>  
@@ -120,9 +123,9 @@
         </action>  
     </test>  
   
-    <test id="16-Assert-MS-Acknowledgement"> 
+    <test id="16-Assert-MS-HospitalNotification"> 
         <name value="Assert-MS-Patient"/>  
-        <description value="Rule assert to validate MustSupport requirements for MedComMessagingAcknowledgement"/>  
+        <description value="Rule assert to validate MustSupport requirements for HospitalNotification"/>  
         <action> 
             <assert> 
                 <extension url="http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript-assert-rule"> 
@@ -134,7 +137,7 @@
                             <valueString value="mustSupported"/> 
                         </extension>  
                         <extension url="value"> 
-                            <valueString value="${Ack-msArray}"/> 
+                            <valueString value="${Patient-msArray}"/> 
                         </extension> 
                     </extension> 
                 </extension>  

@@ -23,10 +23,6 @@
                    url="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-reportOfAdmissionExtension">
           <valueBoolean value="true"/>
         </extension>
-         <extension
-                   url="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-reportOfAdmissionExtension">
-          <reference value="Organization/74cdf292-abf3-4f5f-80ea-60a48013ff6d"/>
-        </extension>
         <eventCoding>
           <system
                   value="http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-eventCodes"/>
