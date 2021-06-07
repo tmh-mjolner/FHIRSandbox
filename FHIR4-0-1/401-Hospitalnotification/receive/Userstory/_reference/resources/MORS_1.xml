@@ -1,11 +1,11 @@
 <Bundle xmlns="http://hl7.org/fhir">
-  <id value="bc99ec4b-a227-4bd1-8c55-1b339ac6644c"/>
+  <id value="364c7aa6-666a-4a40-9bc5-2201d6f74446"/>
   <meta>
     <profile
              value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-message"/>
   </meta>
   <type value="message"/>
-  <timestamp value="2020-10-15T13:44:14Z"/>
+  <timestamp value="2021-06-10T13:44:14Z"/>
   <entry>
     <fullUrl value="MessageHeader/c0c33781-9a01-4560-a55e-3a52ed7e8fd1"/>
     <resource>
@@ -69,7 +69,7 @@
         </text>
         <identifier>
           <system value="urn:oid:1.2.208.176.1.2"/>
-          <value value="0102030405"/>
+          <value value="0108629996"/>
         </identifier>
         <name>
           <use value="official"/>
@@ -146,7 +146,7 @@
           </identifier>
         </episodeOfCare>
         <period>
-          <start value="2020-10-15T13:44:14Z"/>
+          <start value="2021-06-10T13:44:14Z"/>
         </period>
         <serviceProvider>
           <reference value="Organization/12ee0dde-a672-462f-820d-5efe832d73c9"/>
@@ -220,8 +220,8 @@
         <target>
           <reference value="MessageHeader/c0c33781-9a01-4560-a55e-3a52ed7e8fd1"/>
         </target>
-        <occurredDateTime value="2020-10-15T13:44:14Z"/>
-        <recorded value="2020-10-15T13:45:15Z"/>
+        <occurredDateTime value="2021-06-10T13:44:14Z"/>
+        <recorded value="2021-06-10T13:45:15Z"/>
         <activity>
           <coding>
             <system
