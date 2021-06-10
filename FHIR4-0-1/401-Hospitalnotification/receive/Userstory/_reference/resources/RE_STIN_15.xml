@@ -141,11 +141,11 @@
           <identifier>
             <system
                     value="https://www.esundhed.dk/Registre/Landspatientsregisteret"/>
-            <value value="ca109c23-ac4c-4326-8d48-af54bdaed3a6"/>
+            <value value="e15c18bb-e2ae-4834-8b52-6ad2090781c0"/>
           </identifier>
         </episodeOfCare>
         <period>
-          <start value="2021-06-16T13:44:14Z"/>
+          <start value="2021-06-15T13:44:14Z"/>
         </period>
         <serviceProvider>
           <reference value="Organization/7bf61255-b3cb-408f-b9ef-3cc48dbb37f4"/>
@@ -220,7 +220,7 @@
           <reference value="MessageHeader/5400e2aa-a7ce-44f6-a590-801caeee76e1"/>
         </target>
         <occurredDateTime value="2021-06-16T13:44:14Z"/>
-        <recorded value="2021-06-16T13:45:15Z"/>
+        <recorded value="2021-06-15T13:45:15Z"/>
         <activity>
           <coding>
             <system
@@ -233,13 +233,6 @@
             <reference value="Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d"/>
           </who>
         </agent>
-        <entity>
-          <role value="derivation"/>
-          <what>
-            <reference
-                       value="MessageHeader/5400e2aa-a7ce-44f6-a590-801caeee76e1"/>
-          </what>
-        </entity>
       </Provenance>
     </resource>
   </entry>
@@ -273,6 +266,13 @@
             <reference value="Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d"/>
           </who>
         </agent>
+        <entity>
+          <role value="derivation"/>
+          <what>
+            <reference
+                       value="MessageHeader/5400e2aa-a7ce-44f6-a590-801caeee76e1"/>
+          </what>
+        </entity>
       </Provenance>
     </resource>
   </entry>

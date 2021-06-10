@@ -81,7 +81,7 @@
           <system value="phone"/>
           <value value="24533421"/>
         </telecom>
-        <deceasedBoolean value="true"/>
+        <deceasedBoolean value="false"/>
         <address>
           <line value="Forskerparken 10"/>
           <city value="Odense M"/>
@@ -143,7 +143,7 @@
           <identifier>
             <system
                     value="https://www.esundhed.dk/Registre/Landspatientsregisteret"/>
-            <value value="f1028898-cb76-4910-8ad2-ef8c0ac39eaa"/>
+            <value value="74d1c617-28fb-40f8-bb75-b3ae81f20f4c"/>
           </identifier>
         </episodeOfCare>
         <period>
@@ -206,40 +206,7 @@
     </resource>
   </entry>
   <entry>
-    <fullUrl value="Provenance/09942adb-197a-4e30-bec8-566e3a113efe"/>
-    <resource>
-      <Provenance>
-        <id value="09942adb-197a-4e30-bec8-566e3a113efe"/>
-        <meta>
-          <profile
-                   value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-provenance"/>
-        </meta>
-        <text>
-          <status value="generated"/>
-          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>target</b>: <a href="#MessageHeader_734982e4-904a-4064-85d9-f3db4abd3f3d">See above (MessageHeader/734982e4-904a-4064-85d9-f3db4abd3f3d)</a></p><p><b>occurred</b>: Jan 13, 2021, 1:44:14 PM</p><p><b>recorded</b>: Jan 13, 2021, 1:45:15 PM</p><p><b>activity</b>: <span title="Codes: {http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-activityCodes discharge-inpatient-home}">End hospital Stay - patient discharged to home/primary sector</span></p><h3>Agents</h3><table class="grid"><tr><td>-</td><td><b>Who</b></td></tr><tr><td>*</td><td><a href="#Organization_d7056980-a8b2-42aa-8a0e-c1fc85d1f40d">See above (Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d)</a></td></tr></table></div>
-        </text>
-        <target>
-          <reference value="MessageHeader/734982e4-904a-4064-85d9-f3db4abd3f3d"/>
-        </target>
-        <occurredDateTime value="2021-01-13T13:44:14Z"/>
-        <recorded value="2021-01-13T13:45:15Z"/>
-        <activity>
-          <coding>
-            <system
-                    value="http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-activityCodes"/>
-            <code value="discharge-inpatient-home"/>
-          </coding>
-        </activity>
-        <agent>
-          <who>
-            <reference value="Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d"/>
-          </who>
-        </agent>
-      </Provenance>
-    </resource>
-  </entry>
-   <entry>
-    <fullUrl value="Provenance/d7cf3888-6f42-4e4d-929c-d2475d24fba0"/>
+    <fullUrl value="Provenance/a0a8a539-02b3-4706-ae44-5d6c25c6a0b4"/>
     <resource>
       <Provenance>
         <id value="d7cf3888-6f42-4e4d-929c-d2475d24fba0"/>
@@ -311,46 +278,6 @@
       </Provenance>
     </resource>
   </entry>
-  <entry>
-    <fullUrl value="Provenance/d7cf3888-6f42-4e4d-929c-d2475d24fba0"/>
-    <resource>
-      <Provenance>
-        <id value="d7cf3888-6f42-4e4d-929c-d2475d24fba0"/>
-        <meta>
-          <profile
-                   value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-provenance"/>
-        </meta>
-        <text>
-          <status value="generated"/>
-          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>target</b>: <a href="#MessageHeader_95e6482b-3b04-4fb1-a8ab-30901e33002a">See above (MessageHeader/95e6482b-3b04-4fb1-a8ab-30901e33002a)</a></p><p><b>occurred</b>: Oct 15, 2020, 1:44:14 PM</p><p><b>recorded</b>: Oct 15, 2020, 1:45:15 PM</p><p><b>activity</b>: <span title="Codes: {http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-activityCodes end-leave-inpatient}">Start hospital stay-admission</span></p><h3>Agents</h3><table class="grid"><tr><td>-</td><td><b>Who</b></td></tr><tr><td>*</td><td><a href="#Organization_d7056980-a8b2-42aa-8a0e-c1fc85d1f40d">See above (Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d)</a></td></tr></table></div>
-        </text>
-        <target>
-          <reference value="MessageHeader/95e6482b-3b04-4fb1-a8ab-30901e33002a"/>
-        </target>
-        <occurredDateTime value="2021-03-12T13:42:14Z"/>
-        <recorded value="2021-03-10T13:45:15Z"/>
-        <activity>
-          <coding>
-            <system
-                    value="http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-activityCodes"/>
-            <code value="end-leave-inpatient"/>
-          </coding>
-        </activity>
-        <agent>
-          <who>
-            <reference value="Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d"/>
-          </who>
-        </agent>
-        <entity>
-          <role value="derivation"/>
-          <what>
-            <reference
-                       value="MessageHeader/4b6215ab-99a6-4e85-b112-162186234362"/>
-          </what>
-        </entity>
-      </Provenance>
-    </resource>
-  </entry>
    <entry>
     <fullUrl value="Provenance/04db4939-7c60-4ac6-aefc-523f809ccba6"/>
     <resource>
@@ -385,7 +312,7 @@
           <role value="derivation"/>
           <what>
             <reference
-                       value="MessageHeader/95e6482b-3b04-4fb1-a8ab-30901e33002a"/>
+                       value="MessageHeader/4b6215ab-99a6-4e85-b112-162186234362"/>
           </what>
         </entity>
       </Provenance>

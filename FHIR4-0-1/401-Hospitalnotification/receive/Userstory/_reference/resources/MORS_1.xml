@@ -17,11 +17,11 @@
         </meta>
         <text>
           <status value="extensions"/>
-          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>MedCom Report of Admission Extension</b>: true</p><p><b>event</b>: <span title="{http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-eventCodes hospital-notification-message}">Hospital Notification Message</span></p><h3>Destinations</h3><table class="grid"><tr><td>-</td><td><b>Extension</b></td><td><b>Endpoint</b></td><td><b>Receiver</b></td></tr><tr><td>*</td><td></td><td><a href="http://medcomfhir.dk/unknown">http://medcomfhir.dk/unknown</a></td><td><a href="#Organization_74cdf292-abf3-4f5f-80ea-60a48013ff6d">See above (Organization/74cdf292-abf3-4f5f-80ea-60a48013ff6d)</a></td></tr></table><p><b>sender</b>: <a href="#Organization_d7056980-a8b2-42aa-8a0e-c1fc85d1f40d">See above (Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d)</a></p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Endpoint</b></td></tr><tr><td>*</td><td><a href="http://medcomfhir.dk/unknown">http://medcomfhir.dk/unknown</a></td></tr></table><p><b>focus</b>: <a href="#Encounter_7790f964-88d3-4652-bbc8-81d2f3d035f8">See above (Encounter/7790f964-88d3-4652-bbc8-81d2f3d035f8)</a></p></div>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>MedCom Report of Admission Extension</b>: false</p><p><b>event</b>: <span title="{http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-eventCodes hospital-notification-message}">Hospital Notification Message</span></p><h3>Destinations</h3><table class="grid"><tr><td>-</td><td><b>Extension</b></td><td><b>Endpoint</b></td><td><b>Receiver</b></td></tr><tr><td>*</td><td></td><td><a href="http://medcomfhir.dk/unknown">http://medcomfhir.dk/unknown</a></td><td><a href="#Organization_74cdf292-abf3-4f5f-80ea-60a48013ff6d">See above (Organization/74cdf292-abf3-4f5f-80ea-60a48013ff6d)</a></td></tr></table><p><b>sender</b>: <a href="#Organization_d7056980-a8b2-42aa-8a0e-c1fc85d1f40d">See above (Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d)</a></p><h3>Sources</h3><table class="grid"><tr><td>-</td><td><b>Endpoint</b></td></tr><tr><td>*</td><td><a href="http://medcomfhir.dk/unknown">http://medcomfhir.dk/unknown</a></td></tr></table><p><b>focus</b>: <a href="#Encounter_7790f964-88d3-4652-bbc8-81d2f3d035f8">See above (Encounter/7790f964-88d3-4652-bbc8-81d2f3d035f8)</a></p></div>
         </text>
         <extension
                    url="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-reportOfAdmissionExtension">
-          <valueBoolean value="true"/>
+          <valueBoolean value="false"/>
         </extension>
         <eventCoding>
           <system
@@ -65,16 +65,16 @@
         </meta>
         <text>
           <status value="generated"/>
-          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 0102030405</p><p><b>name</b>: Eric Flame (OFFICIAL)</p><p><b>telecom</b>: ph: 12345678</p><p><b>address</b>: Flammesvinget 1 Aarhus 8000 C </p><p><b>managingOrganization</b>: <a href="#Organization_12ee0dde-a672-462f-820d-5efe832d73c9">See above (Organization/12ee0dde-a672-462f-820d-5efe832d73c9)</a></p></div>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 0104909989</p><p><b>name</b>: Eric Flame (OFFICIAL)</p><p><b>telecom</b>: ph: 12345678</p><p><b>address</b>: Flammesvinget 1 Aarhus 8000 C </p><p><b>managingOrganization</b>: <a href="#Organization_6a292295-1291-4f9f-8024-9346c5152ac2">See above (Organization/6a292295-1291-4f9f-8024-9346c5152ac2)</a></p></div>
         </text>
         <identifier>
           <system value="urn:oid:1.2.208.176.1.2"/>
-          <value value="0108629996"/>
+          <value value="0104909989"/>
         </identifier>
         <name>
           <use value="official"/>
-          <family value="Flame"/>
-          <given value="Eric"/>
+          <family value="Mosebryggersen"/>
+          <given value="Torre Test"/>
         </name>
         <telecom>
           <system value="phone"/>
@@ -82,9 +82,9 @@
         </telecom>
         <deceasedBoolean value="true"/>
         <address>
-          <line value="Flammesvinget 1"/>
-          <city value="Aarhus"/>
-          <postalCode value="8000 C"/>
+          <line value="Testgrusgraven 3, 3.tv"/>
+          <city value="Hillerød"/>
+          <postalCode value="3400"/>
         </address>
         <managingOrganization>
           <reference value="Organization/12ee0dde-a672-462f-820d-5efe832d73c9"/>

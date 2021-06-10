@@ -5,7 +5,7 @@
              value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-message"/>
   </meta>
   <type value="message"/>
-  <timestamp value="2020-10-15T13:44:14Z"/>
+  <timestamp value="2021-05-15T15:45:15Z"/>
   <entry>
     <fullUrl value="MessageHeader/76ee27dc-150f-44d9-b39c-47a9ab49627c"/>
     <resource>
@@ -63,7 +63,7 @@
           <profile
                    value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-core-patient"/>
         </meta>
-        <text>
+         <text>
           <status value="generated"/>
           <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 0104909989</p><p><b>name</b>: Eric Flame (OFFICIAL)</p><p><b>telecom</b>: ph: 12345678</p><p><b>address</b>: Flammesvinget 1 Aarhus 8000 C </p><p><b>managingOrganization</b>: <a href="#Organization_12ee0dde-a672-462f-820d-5efe832d73c9">See above (Organization/12ee0dde-a672-462f-820d-5efe832d73c9)</a></p></div>
         </text>
@@ -101,16 +101,16 @@
                    value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-core-organization"/>
         </meta>
         <text>
-          <status value="generated"/>
-          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 123456789012345 (OFFICIAL)</p><p><b>name</b>: Aros Burn Center</p></div>
-        </text>
-        <identifier>
-          <use value="official"/>
-          <system value="urn:oid:1.2.208.176.1.1"/>
-          <value value="123456789012345"/>
-        </identifier>
-        <name value="Aros Burn Center"/>
-      </Organization>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 251791000016004 (OFFICIAL)</p><p><b>name</b>: Rigshospitalet Thorax-kirurgisk Klinik RT</p></div>
+  </text>
+  <identifier>
+    <use value="official"/>
+    <system value="urn:oid:1.2.208.176.1.1"/>
+    <value value="251791000016004"/>
+  </identifier>
+  <name value="Rigshospitalet Thorax-kirurgisk Klinik RT"/>
+</Organization>
     </resource>
   </entry>
   <entry>
@@ -141,11 +141,11 @@
           <identifier>
             <system
                     value="https://www.esundhed.dk/Registre/Landspatientsregisteret"/>
-            <value value="87654321-1234-1234-1234-123456789012"/>
+            <value value="7c31f2b2-dd0d-4fde-b51a-ea304a0f14a8"/>
           </identifier>
         </episodeOfCare>
         <period>
-          <start value="2020-10-15T13:44:14Z"/>
+          <start value="2021-05-15T15:45:15Z"/>
         </period>
         <serviceProvider>
           <reference value="Organization/12ee0dde-a672-462f-820d-5efe832d73c9"/>
@@ -219,7 +219,7 @@
         <target>
           <reference value="MessageHeader/5400e2aa-a7ce-44f6-a590-801caeee76e1"/>
         </target>
-        <occurredDateTime value="2020-10-15T13:44:14Z"/>
+        <occurredDateTime value="2021-05-15T14:45:15Z"/>
         <recorded value="2020-10-15T13:45:15Z"/>
         <activity>
           <coding>
@@ -259,8 +259,8 @@
         <target>
           <reference value="MessageHeader/76ee27dc-150f-44d9-b39c-47a9ab49627c"/>
         </target>
-        <occurredDateTime value="2020-10-15T13:44:14Z"/>
-        <recorded value="2020-10-15T14:45:15Z"/>
+        <occurredDateTime value="2021-05-15T14:45:15Z"/>
+        <recorded value="2021-05-15T154:45:15Z"/>
         <activity>
           <coding>
             <system
@@ -273,6 +273,13 @@
             <reference value="Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d"/>
           </who>
         </agent>
+        <entity>
+          <role value="derivation"/>
+          <what>
+            <reference
+                       value="MessageHeader/5400e2aa-a7ce-44f6-a590-801caeee76e1"/>
+          </what>
+        </entity>
       </Provenance>
     </resource>
   </entry>

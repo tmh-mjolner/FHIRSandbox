@@ -65,7 +65,7 @@
         </meta>
          <text>
           <status value="generated"/>
-          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 0104909989</p><p><b>name</b>: Eric Flame (OFFICIAL)</p><p><b>telecom</b>: ph: 12345678</p><p><b>address</b>: Flammesvinget 1 Aarhus 8000 C </p><p><b>managingOrganization</b>: <a href="#Organization_12ee0dde-a672-462f-820d-5efe832d73c9">See above (Organization/12ee0dde-a672-462f-820d-5efe832d73c9)</a></p></div>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 0104909989</p><p><b>name</b>: Eric Flame (OFFICIAL)</p><p><b>telecom</b>: ph: 12345678</p><p><b>address</b>: Flammesvinget 1 Aarhus 8000 C </p><p><b>managingOrganization</b>: <a href="#Organization_01e1ba51-1a03-414d-8119-1b4614bf8f18">See above (Organization/01e1ba51-1a03-414d-8119-1b4614bf8f18)</a></p></div>
         </text>
         <identifier>
           <system value="urn:oid:1.2.208.176.1.2"/>
@@ -86,31 +86,31 @@
           <postalCode value="3400"/>
         </address>
         <managingOrganization>
-          <reference value="Organization/12ee0dde-a672-462f-820d-5efe832d73c9"/>
+          <reference value="Organization/01e1ba51-1a03-414d-8119-1b4614bf8f18"/>
         </managingOrganization>
       </Patient>
     </resource>
   </entry>
   <entry>
-    <fullUrl value="Organization/12ee0dde-a672-462f-820d-5efe832d73c9"/>
+    <fullUrl value="Organization/01e1ba51-1a03-414d-8119-1b4614bf8f18"/>
     <resource>
       <Organization>
-        <id value="12ee0dde-a672-462f-820d-5efe832d73c9"/>
-        <meta>
-          <profile
-                   value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-core-organization"/>
-        </meta>
-        <text>
-          <status value="generated"/>
-          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 123456789012345 (OFFICIAL)</p><p><b>name</b>: Aros Burn Center</p></div>
-        </text>
-        <identifier>
-          <use value="official"/>
-          <system value="urn:oid:1.2.208.176.1.1"/>
-          <value value="123456789012345"/>
-        </identifier>
-        <name value="Aros Burn Center"/>
-      </Organization>
+  <id value="01e1ba51-1a03-414d-8119-1b4614bf8f18"/>
+  <meta>
+    <profile
+             value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-core-organization"/>
+  </meta>
+  <text>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 238091000016006 (OFFICIAL)</p><p><b>name</b>: OUH Anæstesi-Intensiv Ambulatorium</p></div>
+  </text>
+  <identifier>
+    <use value="official"/>
+    <system value="urn:oid:1.2.208.176.1.1"/>
+    <value value="238091000016006"/>
+  </identifier>
+  <name value="OUH Anæstesi-Intensiv Ambulatorium"/>
+</Organization>
     </resource>
   </entry>
   <entry>
@@ -124,7 +124,7 @@
         </meta>
         <text>
           <status value="generated"/>
-          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 1234567890</p><p><b>status</b>: in-progress</p><p><b>class</b>: <span title="{http://terminology.hl7.org/CodeSystem/v3-ActCode IMP}">inpatient encounter</span></p><p><b>subject</b>: <a href="#Patient_733cef33-3626-422b-955d-d506aaa65fe1">See above (Patient/733cef33-3626-422b-955d-d506aaa65fe1)</a></p><p><b>episodeOfCare</b>: <span></span></p><p><b>period</b>: Oct 15, 2020, 1:44:14 PM --&gt; (ongoing)</p><p><b>serviceProvider</b>: <a href="#Organization_12ee0dde-a672-462f-820d-5efe832d73c9">See above (Organization/12ee0dde-a672-462f-820d-5efe832d73c9)</a></p></div>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 1234567890</p><p><b>status</b>: in-progress</p><p><b>class</b>: <span title="{http://terminology.hl7.org/CodeSystem/v3-ActCode IMP}">inpatient encounter</span></p><p><b>subject</b>: <a href="#Patient_733cef33-3626-422b-955d-d506aaa65fe1">See above (Patient/733cef33-3626-422b-955d-d506aaa65fe1)</a></p><p><b>episodeOfCare</b>: <span></span></p><p><b>period</b>: Oct 15, 2020, 1:44:14 PM --&gt; (ongoing)</p><p><b>serviceProvider</b>: <a href="#Organization_01e1ba51-1a03-414d-8119-1b4614bf8f18">See above (Organization/01e1ba51-1a03-414d-8119-1b4614bf8f18)</a></p></div>
         </text>
         <identifier>
           <value value="7b9f8497-3314-4535-8f86-20df7b5f4d55"/>
@@ -148,7 +148,7 @@
           <start value="2021-03-10T13:44:14Z"/>
         </period>
         <serviceProvider>
-          <reference value="Organization/12ee0dde-a672-462f-820d-5efe832d73c9"/>
+          <reference value="Organization/01e1ba51-1a03-414d-8119-1b4614bf8f18"/>
         </serviceProvider>
       </Encounter>
     </resource>

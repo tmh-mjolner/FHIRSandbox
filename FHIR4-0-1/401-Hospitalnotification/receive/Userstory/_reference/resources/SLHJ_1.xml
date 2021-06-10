@@ -64,28 +64,27 @@
           <profile
                    value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-core-patient"/>
         </meta>
-        <text>
+            <text>
           <status value="generated"/>
-          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 0101010141</p><p><b>name</b>: Erik Clausen (OFFICIAL)</p><p><b>telecom</b>: ph: 24533421</p><p><b>deceased</b>: true</p><p><b>address</b>: Forskerparken 10 Odense M 5230 </p><p><b>managingOrganization</b>: <a href="#Organization_bca68510-fe3b-4161-aba0-908a693eb54f">See above (Organization/bca68510-fe3b-4161-aba0-908a693eb54f)</a></p></div>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 0104909989</p><p><b>name</b>: Eric Flame (OFFICIAL)</p><p><b>telecom</b>: ph: 12345678</p><p><b>address</b>: Flammesvinget 1 Aarhus 8000 C </p><p><b>managingOrganization</b>: <a href="#Organization_6a292295-1291-4f9f-8024-9346c5152ac2">See above (Organization/6a292295-1291-4f9f-8024-9346c5152ac2)</a></p></div>
         </text>
         <identifier>
           <system value="urn:oid:1.2.208.176.1.2"/>
-          <value value="0101010141"/>
+          <value value="0104909989"/>
         </identifier>
         <name>
           <use value="official"/>
-          <family value="Clausen"/>
-          <given value="Erik"/>
+          <family value="Mosebryggersen"/>
+          <given value="Torre Test"/>
         </name>
         <telecom>
           <system value="phone"/>
-          <value value="24533421"/>
+          <value value="12345678"/>
         </telecom>
-        <deceasedBoolean value="true"/>
         <address>
-          <line value="Forskerparken 10"/>
-          <city value="Odense M"/>
-          <postalCode value="5230"/>
+          <line value="Testgrusgraven 3, 3.tv"/>
+          <city value="Hillerød"/>
+          <postalCode value="3400"/>
         </address>
         <managingOrganization>
           <reference value="Organization/bca68510-fe3b-4161-aba0-908a693eb54f"/>
@@ -103,16 +102,16 @@
                    value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-core-organization"/>
         </meta>
         <text>
-          <status value="generated"/>
-          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 378631000016009 (OFFICIAL)</p><p><b>name</b>: Test Practitioner clinic</p></div>
-        </text>
-        <identifier>
-          <use value="official"/>
-          <system value="urn:oid:1.2.208.176.1.1"/>
-          <value value="378631000016009"/>
-        </identifier>
-        <name value="Test Practitioner clinic"/>
-      </Organization>
+    <status value="generated"/>
+    <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 251791000016004 (OFFICIAL)</p><p><b>name</b>: Rigshospitalet Thorax-kirurgisk Klinik RT</p></div>
+  </text>
+  <identifier>
+    <use value="official"/>
+    <system value="urn:oid:1.2.208.176.1.1"/>
+    <value value="251791000016004"/>
+  </identifier>
+  <name value="Rigshospitalet Thorax-kirurgisk Klinik RT"/>
+</Organization>
     </resource>
   </entry>
   <entry>
@@ -143,7 +142,7 @@
           <identifier>
             <system
                     value="https://www.esundhed.dk/Registre/Landspatientsregisteret"/>
-            <value value="87654321-1234-1234-1234-123456789012"/>
+            <value value="ee0d03c2-62c3-4e8d-82fb-134a5b2acaa4"/>
           </identifier>
         </episodeOfCare>
         <period>
