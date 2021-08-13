@@ -46,7 +46,7 @@
           <reference value="Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d"/>
         </sender>
         <source>
-          <endpoint value="http://medcomfhir.dk/unknown"/>
+          <endpoint value="http://medcomfhir.dk/6114d4a6-6b41-430d-8008-9c321d722275"/>
         </source>
         <focus>
           <reference value="Encounter/7790f964-88d3-4652-bbc8-81d2f3d035f8"/>

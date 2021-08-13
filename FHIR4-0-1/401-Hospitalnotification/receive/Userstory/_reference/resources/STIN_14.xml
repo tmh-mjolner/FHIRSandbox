@@ -37,7 +37,7 @@
               <code value="primary"/>
             </valueCoding>
           </extension>
-          <endpoint value="http://medcomfhir.dk/8061915e-fafb-40e3-acf0-fd9fe2290fb6"/>
+          <endpoint value="http://medcomfhir.dk/511e6ca3-cd53-4977-bf43-6c1becd45884"/>
           <receiver>
             <reference value="Organization/74cdf292-abf3-4f5f-80ea-60a48013ff6d"/>
           </receiver>
@@ -101,7 +101,7 @@
           <profile
                    value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-core-organization"/>
         </meta>
-        <<text>
+        <text>
     <status value="generated"/>
     <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 251791000016004 (OFFICIAL)</p><p><b>name</b>: Rigshospitalet Thorax-kirurgisk Klinik RT</p></div>
   </text>

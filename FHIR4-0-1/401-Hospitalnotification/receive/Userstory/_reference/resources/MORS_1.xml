@@ -37,7 +37,7 @@
               <code value="primary"/>
             </valueCoding>
           </extension>
-          <endpoint value="http://medcomfhir.dk/unknown"/>
+          <endpoint value="http://medcomfhir.dk/688bfaed-ea03-4fc6-8886-32195f4edb7f"/>
           <receiver>
             <reference value="Organization/74cdf292-abf3-4f5f-80ea-60a48013ff6d"/>
           </receiver>

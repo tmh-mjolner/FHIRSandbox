@@ -1,0 +1,305 @@
+{
+  "resourceType": "TestScript",
+  "id": "UFHV10",
+  "meta": {
+    "profile": [
+      "http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript"
+    ]
+  },
+  "url": "http://build.fhir.org/ig/hl7dk/dk-medcom/",
+  "name": "Patient is admitted at hospital, transferred to another hospital (another region), and finally discharged to home",
+  "title": "Patient is admitted at hospital, transferred to another hospital (another region), and finally discharged to home",
+  "status": "active",
+  "date": "2021-07-05",
+  "publisher": "MedCom",
+  "contact": [
+    {
+      "name": "MedCom",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "fhir@medcom.dk",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Testing correct use of admit and discharge",
+  "copyright": "MedCom 2021",
+  "origin": [
+    {
+      "index": 1,
+      "profile": {
+        "system": "http://terminology.hl7.org/CodeSystem/testscript-profile-origin-types",
+        "code": "FHIR-Client"
+      }
+    }
+  ],
+  "destination": [
+    {
+      "index": 1,
+      "profile": {
+        "system": "http://terminology.hl7.org/CodeSystem/testscript-profile-destination-types",
+        "code": "FHIR-Server"
+      }
+    }
+  ],
+  "fixture": [
+    {
+      "id": "bundle-create-STIN1",
+      "autocreate": false,
+      "autodelete": false,
+      "resource": {
+        "reference": "/FHIRSandbox/MedCom/401-Hospitalnotification/receive/Userstory/_reference/resources/STIN-UF_H_V_10.xml"
+      }
+    },
+    {
+      "id": "bundle-create-STIN2",
+      "autocreate": false,
+      "autodelete": false,
+      "resource": {
+        "reference": "/FHIRSandbox/MedCom/401-Hospitalnotification/receive/Userstory/_reference/resources/STIN2-UF_H_V_10.xml"
+      }
+    },
+    {
+      "id": "bundle-create-SLHJ",
+      "autocreate": false,
+      "autodelete": false,
+      "resource": {
+        "reference": "/FHIRSandbox/MedCom/401-Hospitalnotification/receive/Userstory/_reference/resources/SLHJ-UF_H_V_10.xml"
+      }
+    }
+  ],
+  "profile": [
+    {
+      "id": "hospitalnotification-profile",
+      "reference": "http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-message"
+    }
+  ],
+  "variable": [
+    {
+      "name": "destinationUri",
+      "expression": "Bundle.entry.resource.ofType(MessageHeader).destination.endpoint",
+      "sourceId": "bundle-create-STIN1"
+    },
+    {
+      "name": "destinationUriSTIN2",
+      "expression": "Bundle.entry.resource.ofType(MessageHeader).destination.endpoint",
+      "sourceId": "bundle-create-STIN2"
+    },
+    {
+      "name": "destinationUriSLHJ8",
+      "expression": "Bundle.entry.resource.ofType(MessageHeader).destination.endpoint",
+      "sourceId": "bundle-create-SLHJ"
+    }
+  ],
+  "setup": {
+    "action": [
+      {
+        "operation": {
+          "type": {
+            "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+            "code": "delete"
+          },
+          "resource": "Bundle",
+          "description": "System-generated search and delete operations from conditional delete on Bundle MessageHeader).destination.endpoint",
+          "accept": "xml",
+          "encodeRequestUrl": true,
+          "params": "?message.destination-uri=${destinationUri}"
+        }
+      },
+      {
+        "operation": {
+          "type": {
+            "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+            "code": "create"
+          },
+          "resource": "Bundle",
+          "description": "Create the Bundle resource in XML format on the destination server.",
+          "accept": "xml",
+          "contentType": "xml",
+          "encodeRequestUrl": true,
+          "sourceId": "bundle-create-STIN1"
+        }
+      },
+      {
+        "assert": {
+          "description": "Confirm that the returned HTTP status is 201(Created).",
+          "direction": "response",
+          "responseCode": "201",
+          "warningOnly": false
+        }
+      },
+      {
+        "operation": {
+          "type": {
+            "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+            "code": "delete"
+          },
+          "resource": "Bundle",
+          "description": "System-generated search and delete operations from conditional delete on Bundle MessageHeader).destination.endpoint",
+          "accept": "xml",
+          "encodeRequestUrl": true,
+          "params": "?message.destination-uri=${destinationUriSTIN2}"
+        }
+      },
+      {
+        "operation": {
+          "type": {
+            "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+            "code": "create"
+          },
+          "resource": "Bundle",
+          "description": "Create the Bundle resource in XML format on the destination server.",
+          "accept": "xml",
+          "contentType": "xml",
+          "encodeRequestUrl": true,
+          "sourceId": "bundle-create-STIN2"
+        }
+      },
+      {
+        "assert": {
+          "description": "Confirm that the returned HTTP status is 201(Created).",
+          "direction": "response",
+          "responseCode": "201",
+          "warningOnly": false
+        }
+      },
+      {
+        "assert": {
+          "description": "Confirm that the returned HTTP status is 201(Created).",
+          "direction": "response",
+          "responseCode": "201",
+          "warningOnly": false
+        }
+      },
+      {
+        "operation": {
+          "type": {
+            "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+            "code": "delete"
+          },
+          "resource": "Bundle",
+          "description": "System-generated search and delete operations from conditional delete on Bundle MessageHeader).destination.endpoint",
+          "accept": "xml",
+          "encodeRequestUrl": true,
+          "params": "?message.destination-uri=${destinationUriSLHJ8}"
+        }
+      },
+      {
+        "operation": {
+          "type": {
+            "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+            "code": "create"
+          },
+          "resource": "Bundle",
+          "description": "Create the Bundle resource in XML format on the destination server.",
+          "accept": "xml",
+          "contentType": "xml",
+          "encodeRequestUrl": true,
+          "sourceId": "bundle-create-SLHJ"
+        }
+      },
+      {
+        "assert": {
+          "description": "Confirm that the returned HTTP status is 201(Created).",
+          "direction": "response",
+          "responseCode": "201",
+          "warningOnly": false
+        }
+      }
+    ]
+  },
+  "test": [
+    {
+      "id": "01-STIN-admitted",
+      "name": "HospitalNotification-STIN",
+      "description": "GET a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format.",
+      "action": [
+        {
+          "operation": {
+            "type": {
+              "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+              "code": "read"
+            },
+            "resource": "Bundle",
+            "description": "Receive notification about admission -STIN",
+            "accept": "xml",
+            "destination": 1,
+            "encodeRequestUrl": true,
+            "origin": 1,
+            "params": "?message.destination-uri=${destinationUri}"
+          }
+        },
+        {
+          "assert": {
+            "description": "Confirm that the returned HTTP status is 200(OK).",
+            "direction": "response",
+            "responseCode": "200",
+            "warningOnly": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "02-STIN",
+      "name": "HospitalNotification-STIN2",
+      "description": "GET a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format.",
+      "action": [
+        {
+          "operation": {
+            "type": {
+              "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+              "code": "read"
+            },
+            "resource": "Bundle",
+            "description": "The patient does not show up after ended leave -SLHJ",
+            "accept": "xml",
+            "destination": 1,
+            "encodeRequestUrl": true,
+            "origin": 1,
+            "params": "?message.destination-uri=${destinationUriSTIN2}"
+          }
+        },
+        {
+          "assert": {
+            "description": "Confirm that the returned HTTP status is 200(OK).",
+            "direction": "response",
+            "responseCode": "200",
+            "warningOnly": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "04-SLHJ",
+      "name": "HospitalNotification-SLHJ",
+      "description": "GET a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format.",
+      "action": [
+        {
+          "operation": {
+            "type": {
+              "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+              "code": "read"
+            },
+            "resource": "Bundle",
+            "description": "The patient does not show up after ended leave -SLHJ",
+            "accept": "xml",
+            "destination": 1,
+            "encodeRequestUrl": true,
+            "origin": 1,
+            "params": "?message.destination-uri=${destinationUriSLHJ8}"
+          }
+        },
+        {
+          "assert": {
+            "description": "Confirm that the returned HTTP status is 200(OK).",
+            "direction": "response",
+            "responseCode": "200",
+            "warningOnly": false
+          }
+        }
+      ]
+    }
+  ]
+}

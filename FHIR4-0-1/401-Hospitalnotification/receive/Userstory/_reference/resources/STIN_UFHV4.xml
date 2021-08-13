@@ -1,5 +1,5 @@
 <Bundle xmlns="http://hl7.org/fhir">
-  <id value="5193fba2-6583-4d9a-92fe-6270ef8fbf17"/>
+  <id value="34d11820-8fea-4a52-8ebe-86b46eab8c6b"/>
   <meta>
     <profile
              value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-message"/>
@@ -7,10 +7,10 @@
   <type value="message"/>
   <timestamp value="2021-05-15T14:44:14Z"/>
   <entry>
-    <fullUrl value="MessageHeader/5400e2aa-a7ce-44f6-a590-801caeee76e1"/>
+    <fullUrl value="MessageHeader/03f7b1c2-ad99-4f38-954c-c5d2cb1dbfc6"/>
     <resource>
       <MessageHeader>
-        <id value="5400e2aa-a7ce-44f6-a590-801caeee76e1"/>
+        <id value="03f7b1c2-ad99-4f38-954c-c5d2cb1dbfc6"/>
         <meta>
           <profile
                    value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-messageHeader"/>
@@ -204,20 +204,20 @@
     </resource>
   </entry>
   <entry>
-    <fullUrl value="Provenance/d7cf3888-6f42-4e4d-929c-d2475d24fba0"/>
+    <fullUrl value="Provenance/531e0514-2c59-4225-b8c4-c9dfc82de16c"/>
     <resource>
       <Provenance>
-        <id value="d7cf3888-6f42-4e4d-929c-d2475d24fba0"/>
+        <id value="531e0514-2c59-4225-b8c4-c9dfc82de16c"/>
         <meta>
           <profile
                    value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-provenance"/>
         </meta>
         <text>
           <status value="generated"/>
-          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>target</b>: <a href="#MessageHeader_5400e2aa-a7ce-44f6-a590-801caeee76e1">See above (MessageHeader/5400e2aa-a7ce-44f6-a590-801caeee76e1)</a></p><p><b>occurred</b>: Oct 15, 2020, 1:44:14 PM</p><p><b>recorded</b>: Oct 15, 2020, 1:45:15 PM</p><p><b>activity</b>: <span title="Codes: {http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-activityCodes admit-inpatient}">Start hospital stay-admission</span></p><h3>Agents</h3><table class="grid"><tr><td>-</td><td><b>Who</b></td></tr><tr><td>*</td><td><a href="#Organization_d7056980-a8b2-42aa-8a0e-c1fc85d1f40d">See above (Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d)</a></td></tr></table></div>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>target</b>: <a href="#MessageHeader_03f7b1c2-ad99-4f38-954c-c5d2cb1dbfc6">See above (MessageHeader/03f7b1c2-ad99-4f38-954c-c5d2cb1dbfc6)</a></p><p><b>occurred</b>: Oct 15, 2020, 1:44:14 PM</p><p><b>recorded</b>: Oct 15, 2020, 1:45:15 PM</p><p><b>activity</b>: <span title="Codes: {http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-activityCodes admit-inpatient}">Start hospital stay-admission</span></p><h3>Agents</h3><table class="grid"><tr><td>-</td><td><b>Who</b></td></tr><tr><td>*</td><td><a href="#Organization_d7056980-a8b2-42aa-8a0e-c1fc85d1f40d">See above (Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d)</a></td></tr></table></div>
         </text>
         <target>
-          <reference value="MessageHeader/5400e2aa-a7ce-44f6-a590-801caeee76e1"/>
+          <reference value="MessageHeader/03f7b1c2-ad99-4f38-954c-c5d2cb1dbfc6"/>
         </target>
         <occurredDateTime value="2021-05-15T14:44:14Z"/>
         <recorded value="2021-05-15T14:45:15Z"/>
