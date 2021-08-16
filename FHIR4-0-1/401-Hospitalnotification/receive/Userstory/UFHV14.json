@@ -1,0 +1,219 @@
+{
+  "resourceType": "TestScript",
+  "id": "UFHV14",
+  "meta": {
+    "profile": [
+      "http://touchstone.aegis.net/touchstone/fhir/testing/StructureDefinition/testscript"
+    ]
+  },
+  "url": "http://build.fhir.org/ig/hl7dk/dk-medcom/",
+  "name": "Patient is admitted and dies at the hospital",
+  "title": "Patient is admitted and dies at the hospital",
+  "status": "active",
+  "date": "2021-07-07",
+  "publisher": "MedCom",
+  "contact": [
+    {
+      "name": "MedCom",
+      "telecom": [
+        {
+          "system": "email",
+          "value": "fhir@medcom.dk",
+          "use": "work"
+        }
+      ]
+    }
+  ],
+  "description": "Testing correct use of status admit-inpatient",
+  "copyright": "MedCom 2021",
+  "origin": [
+    {
+      "index": 1,
+      "profile": {
+        "system": "http://terminology.hl7.org/CodeSystem/testscript-profile-origin-types",
+        "code": "FHIR-Client"
+      }
+    }
+  ],
+  "destination": [
+    {
+      "index": 1,
+      "profile": {
+        "system": "http://terminology.hl7.org/CodeSystem/testscript-profile-destination-types",
+        "code": "FHIR-Server"
+      }
+    }
+  ],
+  "fixture": [
+    {
+      "id": "bundle-create-STIN",
+      "autocreate": false,
+      "autodelete": false,
+      "resource": {
+        "reference": "/FHIRSandbox/MedCom/401-Hospitalnotification/receive/Userstory/_reference/resources/STIN_9.xml"
+      }
+    },
+    {
+      "id": "bundle-create-MORS",
+      "autocreate": false,
+      "autodelete": false,
+      "resource": {
+        "reference": "/FHIRSandbox/MedCom/401-Hospitalnotification/receive/Userstory/_reference/resources/MORS_2.xml"
+      }
+    }
+  ],
+  "profile": [
+    {
+      "id": "hospitalnotification-profile",
+      "reference": "http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-hospitalNotification-message"
+    }
+  ],
+  "variable": [
+    {
+      "name": "destinationUri",
+      "expression": "Bundle.entry.resource.ofType(MessageHeader).destination.endpoint",
+      "sourceId": "bundle-create-STIN"
+    },
+    {
+      "name": "destinationUriMORS",
+      "expression": "Bundle.entry.resource.ofType(MessageHeader).destination.endpoint",
+      "sourceId": "bundle-create-MORS"
+    }
+  ],
+  "setup": {
+    "action": [
+      {
+        "operation": {
+          "type": {
+            "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+            "code": "delete"
+          },
+          "resource": "Bundle",
+          "description": "System-generated search and delete operations from conditional delete on Bundle MessageHeader).destination.endpoint",
+          "accept": "xml",
+          "encodeRequestUrl": true,
+          "params": "?message.destination-uri=${destinationUri}"
+        }
+      },
+      {
+        "operation": {
+          "type": {
+            "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+            "code": "create"
+          },
+          "resource": "Bundle",
+          "description": "Create the Bundle resource in XML format on the destination server.",
+          "accept": "xml",
+          "contentType": "xml",
+          "encodeRequestUrl": true,
+          "sourceId": "bundle-create-STIN"
+        }
+      },
+      {
+        "assert": {
+          "description": "Confirm that the returned HTTP status is 201(Created).",
+          "direction": "response",
+          "responseCode": "201",
+          "warningOnly": false
+        }
+      },
+      {
+        "operation": {
+          "type": {
+            "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+            "code": "delete"
+          },
+          "resource": "Bundle",
+          "description": "System-generated search and delete operations from conditional delete on Bundle MessageHeader).destination.endpoint",
+          "accept": "xml",
+          "encodeRequestUrl": true,
+          "params": "?message.destination-uri=${destinationUriMORS}"
+        }
+      },
+      {
+        "operation": {
+          "type": {
+            "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+            "code": "create"
+          },
+          "resource": "Bundle",
+          "description": "Create the Bundle resource in XML format on the destination server.",
+          "accept": "xml",
+          "contentType": "xml",
+          "encodeRequestUrl": true,
+          "sourceId": "bundle-create-MORS"
+        }
+      },
+      {
+        "assert": {
+          "description": "Confirm that the returned HTTP status is 201(Created).",
+          "direction": "response",
+          "responseCode": "201",
+          "warningOnly": false
+        }
+      }
+    ]
+  },
+  "test": [
+    {
+      "id": "01-STIN-admitted",
+      "name": "HospitalNotification-STIN",
+      "description": "GET a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format.",
+      "action": [
+        {
+          "operation": {
+            "type": {
+              "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+              "code": "read"
+            },
+            "resource": "Bundle",
+            "description": "Receive notification about admission -STIN",
+            "accept": "xml",
+            "destination": 1,
+            "encodeRequestUrl": true,
+            "origin": 1,
+            "params": "?message.destination-uri=${destinationUri}"
+          }
+        },
+        {
+          "assert": {
+            "description": "Confirm that the returned HTTP status is 200(OK).",
+            "direction": "response",
+            "responseCode": "200",
+            "warningOnly": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "02-MORS-dies",
+      "name": "HospitalNotification-MORS",
+      "description": "GET a Hospital notification. The expected response is a 200(OK) with a payload of the Hospital notification resource in XML format.",
+      "action": [
+        {
+          "operation": {
+            "type": {
+              "system": "http://terminology.hl7.org/CodeSystem/testscript-operation-codes",
+              "code": "read"
+            },
+            "resource": "Bundle",
+            "description": "The patient does not show up after ended leave -SLHJ",
+            "accept": "xml",
+            "destination": 1,
+            "encodeRequestUrl": true,
+            "origin": 1,
+            "params": "?message.destination-uri=${destinationUriMORS}"
+          }
+        },
+        {
+          "assert": {
+            "description": "Confirm that the returned HTTP status is 200(OK).",
+            "direction": "response",
+            "responseCode": "200",
+            "warningOnly": false
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -46,7 +46,7 @@
           <reference value="Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d"/>
         </sender>
         <source>
-          <endpoint value="http://medcom.dk/unknown"/>
+          <endpoint value="http://medcom.dk/6a248a6b-75f8-4c0b-9d19-d06a77a2d9df"/>
         </source>
         <focus>
           <reference

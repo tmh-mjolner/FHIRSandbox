@@ -21,7 +21,7 @@
         </text>
         <extension
                    url="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-reportOfAdmissionExtension">
-          <valueBoolean value="true"/>
+          <valueBoolean value="false"/>
         </extension>
         <eventCoding>
           <system
@@ -65,25 +65,25 @@
         </meta>
         <text>
           <status value="generated"/>
-          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 0102030405</p><p><b>name</b>: Eric Flame (OFFICIAL)</p><p><b>telecom</b>: ph: 12345678</p><p><b>address</b>: Flammesvinget 1 Aarhus 8000 C </p><p><b>managingOrganization</b>: <a href="#Organization_12ee0dde-a672-462f-820d-5efe832d73c9">See above (Organization/12ee0dde-a672-462f-820d-5efe832d73c9)</a></p></div>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>identifier</b>: id: 0504909989</p><p><b>name</b>: lars Test (OFFICIAL)</p><p><b>telecom</b>: ph: 12345678</p><p><b>address</b>: Testpark Allé 48 Hillerød 4800 </p><p><b>managingOrganization</b>: <a href="#Organization_12ee0dde-a672-462f-820d-5efe832d73c9">See above (Organization/12ee0dde-a672-462f-820d-5efe832d73c9)</a></p></div>
         </text>
         <identifier>
           <system value="urn:oid:1.2.208.176.1.2"/>
-          <value value="0102030405"/>
+          <value value="0504909989"/>
         </identifier>
         <name>
           <use value="official"/>
-          <family value="Flame"/>
-          <given value="Eric"/>
+          <family value="Berggren"/>
+          <given value="Lars Test"/>
         </name>
         <telecom>
           <system value="phone"/>
           <value value="12345678"/>
         </telecom>
         <address>
-          <line value="Flammesvinget 1"/>
-          <city value="Aarhus"/>
-          <postalCode value="8000 C"/>
+          <line value="Testpark Allé 48"/>
+          <city value="Hillerød"/>
+          <postalCode value="3400"/>
         </address>
         <managingOrganization>
           <reference value="Organization/12ee0dde-a672-462f-820d-5efe832d73c9"/>
@@ -141,7 +141,7 @@
           <identifier>
             <system
                     value="https://www.esundhed.dk/Registre/Landspatientsregisteret"/>
-            <value value="87654321-1234-1234-1234-123456789012"/>
+            <value value="94297dfd-d9ea-4827-b54a-350cbd916970"/>
           </identifier>
         </episodeOfCare>
         <period>
@@ -214,6 +214,79 @@
         </meta>
         <text>
           <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>target</b>: <a href="#MessageHeader_72c2d143-fb16-45c8-ba3d-fb93b8372222">See above (MessageHeader/72c2d143-fb16-45c8-ba3d-fb93b8372222)</a></p><p><b>occurred</b>: Oct 15, 2020, 1:44:14 PM</p><p><b>recorded</b>: Oct 15, 2020, 1:45:15 PM</p><p><b>activity</b>: <span title="Codes: {http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-activityCodes admit-inpatient}">Start hospital stay-admission</span></p><h3>Agents</h3><table class="grid"><tr><td>-</td><td><b>Who</b></td></tr><tr><td>*</td><td><a href="#Organization_d7056980-a8b2-42aa-8a0e-c1fc85d1f40d">See above (Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d)</a></td></tr></table></div>
+        </text>
+        <target>
+          <reference value="MessageHeader/72c2d143-fb16-45c8-ba3d-fb93b8372222"/>
+        </target>
+        <occurredDateTime value="2021-03-10T13:44:14Z"/>
+        <recorded value="2021-03-10T13:45:15Z"/>
+        <activity>
+          <coding>
+            <system
+                    value="http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-activityCodes"/>
+            <code value="admit-inpatient"/>
+          </coding>
+        </activity>
+        <agent>
+          <who>
+            <reference value="Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d"/>
+          </who>
+        </agent>
+      </Provenance>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="Provenance/d7cf3888-6f42-4e4d-929c-d2475d24fba0"/>
+    <resource>
+      <Provenance>
+        <id value="d7cf3888-6f42-4e4d-929c-d2475d24fba0"/>
+        <meta>
+          <profile
+                   value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-provenance"/>
+        </meta>
+        <text>
+          <status value="generated"/>
+          <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>target</b>: <a href="#MessageHeader_5654b38e-bc0c-4337-8b69-808e37fa082a">See above (MessageHeader/5654b38e-bc0c-4337-8b69-808e37fa082a)</a></p><p><b>occurred</b>: Oct 15, 2020, 1:44:14 PM</p><p><b>recorded</b>: Oct 15, 2020, 1:45:15 PM</p><p><b>activity</b>: <span title="Codes: {http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-activityCodes start-leave-inpatient}">Start hospital stay-admission</span></p><h3>Agents</h3><table class="grid"><tr><td>-</td><td><b>Who</b></td></tr><tr><td>*</td><td><a href="#Organization_d7056980-a8b2-42aa-8a0e-c1fc85d1f40d">See above (Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d)</a></td></tr></table></div>
+        </text>
+        <target>
+          <reference value="MessageHeader/5654b38e-bc0c-4337-8b69-808e37fa082a"/>
+        </target>
+        <occurredDateTime value="2021-03-10T13:44:14Z"/>
+        <recorded value="2021-03-11T13:45:15Z"/>
+        <activity>
+          <coding>
+            <system
+                    value="http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-activityCodes"/>
+            <code value="start-leave-inpatient"/>
+          </coding>
+        </activity>
+        <agent>
+          <who>
+            <reference value="Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d"/>
+          </who>
+        </agent>
+        <entity>
+          <role value="derivation"/>
+          <what>
+            <reference
+                       value="MessageHeader/72c2d143-fb16-45c8-ba3d-fb93b8372222"/>
+          </what>
+        </entity>
+      </Provenance>
+    </resource>
+  </entry>
+  <entry>
+    <fullUrl value="Provenance/d7cf3888-6f42-4e4d-929c-d2475d24fba0"/>
+    <resource>
+      <Provenance>
+        <id value="d7cf3888-6f42-4e4d-929c-d2475d24fba0"/>
+        <meta>
+          <profile
+                   value="http://medcomfhir.dk/fhir/core/1.0/StructureDefinition/medcom-messaging-provenance"/>
+        </meta>
+        <text>
+          <status value="generated"/>
           <div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative</b></p><p><b>target</b>: <a href="#MessageHeader_0ca64492-253a-4f51-99ff-bcbfdba5fae2">See above (MessageHeader/0ca64492-253a-4f51-99ff-bcbfdba5fae2)</a></p><p><b>occurred</b>: Oct 15, 2020, 1:44:14 PM</p><p><b>recorded</b>: Oct 15, 2020, 1:45:15 PM</p><p><b>activity</b>: <span title="Codes: {http://medcomfhir.dk/fhir/core/1.0/CodeSystem/medcom-messaging-activityCodes cancel-start-leave-inpatient}">Start hospital stay-admission</span></p><h3>Agents</h3><table class="grid"><tr><td>-</td><td><b>Who</b></td></tr><tr><td>*</td><td><a href="#Organization_d7056980-a8b2-42aa-8a0e-c1fc85d1f40d">See above (Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d)</a></td></tr></table></div>
         </text>
         <target>
@@ -233,6 +306,13 @@
             <reference value="Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d"/>
           </who>
         </agent>
+        <entity>
+          <role value="derivation"/>
+          <what>
+            <reference
+                       value="MessageHeader/5654b38e-bc0c-4337-8b69-808e37fa082a"/>
+          </what>
+        </entity>
       </Provenance>
     </resource>
   </entry>

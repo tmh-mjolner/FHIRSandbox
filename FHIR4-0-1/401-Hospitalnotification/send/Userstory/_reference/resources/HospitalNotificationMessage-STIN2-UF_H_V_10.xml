@@ -37,7 +37,7 @@
               <code value="primary"/>
             </valueCoding>
           </extension>
-          <endpoint value="http://medcomfhir.dk/8061915e-fafb-40e3-acf0-fd9fe2290fb6"/>
+          <endpoint value="http://medcomfhir.dk/eeeda249-28c9-4b58-8cd3-6ff045c2a1b0"/>
           <receiver>
             <reference value="Organization/74cdf292-abf3-4f5f-80ea-60a48013ff6d"/>
           </receiver>
@@ -46,7 +46,7 @@
           <reference value="Organization/d7056980-a8b2-42aa-8a0e-c1fc85d1f40d"/>
         </sender>
         <source>
-          <endpoint value="http://medcomfhir.dk/unknown"/>
+          <endpoint value="http://medcomfhir.dk/834a9bed-b392-4026-9249-f7a722ba3025"/>
         </source>
         <focus>
           <reference value="Encounter/7790f964-88d3-4652-bbc8-81d2f3d035f8"/>
