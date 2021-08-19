@@ -129,7 +129,7 @@
         <identifier>
           <value value="57675828-9929-42e9-a73c-ac65f0cde8f0"/>
         </identifier>
-        <status value="entered-in-error"/>
+        <status value="cancelled"/>
         <class>
           <system value="http://terminology.hl7.org/CodeSystem/v3-ActCode"/>
           <code value="IMP"/>
